@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section - Hotel Salak The Heritage Bogor</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        /* ======================================================
+    NAVBAR (persis sama dengan navbar Hotel Salak)
+    ====================================================== */
+        
+         :root {
+            --logo-h: 52px;
+            /* ganti angka ini saja untuk resize logo, semua elemen navbar ikut menyesuaikan */
+            --navbar-h: calc(var(--logo-h) + 40px);
+            /* logo dikebawahin lagi -> jarak lebih lega dari garis bawah navbar */
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            height: var(--navbar-h);
+            background: linear-gradient(180deg, #ffffff 0%, #fdfaf4 100%) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(90deg, #c9a35a, #e8cf9c, #c9a35a) 1;
+            /* NAVBAR DISEMBUNYIKAN SELAMA MASIH DI HERO */
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+        }
+        /* Muncul setelah user scroll melewati hero */
+        
+        .navbar.navbar-visible {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .navbar.navbar-scrolled {
+            background: linear-gradient(180deg, #ffffff 0%, #faf3e6 100%) !important;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+        /* Sembunyi lagi kalau scroll ke bawah (setelah muncul) */
+        
+        .navbar.navbar-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .brand-logo {
+            display: block;
+            height: var(--logo-h);
+            width: auto;
+            object-fit: contain;
+            margin: auto 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+            flex: 1;
+        }
+        
+        .nav-item {
+            position: relative;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: #262626 !important;
+            text-decoration: none;
+            padding: calc(var(--logo-h) * 0.42) calc(var(--logo-h) * 0.35);
+            display: block;
+            font-size: calc(var(--logo-h) * 0.28);
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .nav-link:hover {
+            color: #b8863f !important;
+        }
+        
+        .nav-item.active>.nav-link {
+            color: #b8863f !important;
+        }
+        /* SUBMENU (desktop) */
+        
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: var(--navbar-h);
+            left: 0;
+            background-color: #ffffff !important;
+            min-width: 230px;
+            z-index: 1000;
+            border-top: 2px solid #c9a35a;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        .dropdown a {
+            display: block;
+            color: #3a3a3a !important;
+            text-decoration: none;
+            padding: calc(var(--logo-h) * 0.28) calc(var(--logo-h) * 0.38);
+            border-bottom: 1px solid #eee;
+            font-size: calc(var(--logo-h) * 0.26);
+        }
+        
+        .dropdown a:hover {
+            background-color: #faf3e6 !important;
+            color: #b8863f !important;
+        }
+        /* SUBMENU MUNCUL (desktop) */
+        
+        .nav-item.active .dropdown {
+            display: block;
+        }
+        /* PANAH */
+        
+        .arrow {
+            font-size: calc(var(--logo-h) * 0.21);
+            margin-left: 5px;
+        }
+        /* ===== HAMBURGER (mobile/tablet) ===== */
+        
+        .navbar-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 38px;
+            height: 38px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1200;
+        }
+        
+        .navbar-toggle span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background-color: #262626;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .navbar-toggle.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+            background-color: #b8863f;
+        }
+        
+        .navbar-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .navbar-toggle.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+            background-color: #b8863f;
+        }
+        /* Overlay saat menu mobile terbuka */
+        
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1050;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        
+        .nav-overlay.show {
+            display: block;
+            opacity: 1;
+        }
+        /* =========================================================
+       RESPONSIVE NAVBAR: TABLET & MOBILE (<992px)
+       ========================================================= */
+        
+        @media (max-width: 991.98px) {
+             :root {
+                --logo-h: 42px;
+                --navbar-h: calc(var(--logo-h) + 30px);
+            }
+            .navbar {
+                padding: 0 18px;
+            }
+            .navbar-toggle {
+                display: flex;
+            }
+            /* Menu jadi panel geser dari kanan */
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100vh;
+                width: min(320px, 82vw);
+                background: linear-gradient(180deg, #ffffff 0%, #faf3e6 100%);
+                flex-direction: column;
+                align-items: stretch;
+                justify-content: flex-start;
+                overflow-y: auto;
+                padding: calc(var(--navbar-h) + 10px) 0 30px;
+                box-shadow: -8px 0 24px rgba(0, 0, 0, 0.18);
+                transform: translateX(100%);
+                transition: transform 0.4s ease;
+                z-index: 1150;
+            }
+            .nav-menu.open {
+                transform: translateX(0);
+            }
+            .nav-item {
+                width: 100%;
+                border-bottom: 1px solid #eee;
+            }
+            .nav-link {
+                padding: 16px 24px;
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            /* Submenu jadi accordion, bukan absolute */
+            .dropdown {
+                position: static;
+                display: none;
+                border-top: none;
+                box-shadow: none;
+                background-color: #fbf6ec !important;
+                min-width: 100%;
+            }
+            .nav-item.active .dropdown {
+                display: block;
+            }
+            .dropdown a {
+                padding: 13px 34px;
+                font-size: 14px;
+            }
+        }
+        /* Tablet sedikit lebih lega dari mobile kecil */
+        
+        @media (min-width: 576px) and (max-width: 991.98px) {
+             :root {
+                --logo-h: 46px;
+            }
+            .nav-menu {
+                width: min(360px, 70vw);
+            }
+        }
+        /* HP kecil */
+        
+        @media (max-width: 400px) {
+             :root {
+                --logo-h: 36px;
+            }
+            .navbar {
+                padding: 0 14px;
+            }
+        }
+        /* ======================================================
+    HERO
+    ====================================================== */
+        
+        .rooms-hero {
+            position: relative;
+            width: 100%;
+            height: 62vh;
+            background: url('1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+        
+        .rooms-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, .45);
+        }
+        
+        .rooms-hero-content {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+            padding-left: 70px;
+            margin-top: 40px;
+        }
+        
+        .rooms-subtitle {
+            font-size: 14px;
+            letter-spacing: 8px;
+            margin-bottom: 22px;
+            font-weight: 300;
+        }
+        
+        .rooms-title {
+            font-family: 'Cinzel', serif;
+            font-size: 92px;
+            font-weight: 400;
+            line-height: 1.1;
+        }
+        /* ======================================================
+    MOBILE
+    ====================================================== */
+        
+        @media(max-width:768px) {
+            .rooms-hero {
+                height: 48vh;
+                background-position: center;
+            }
+            .rooms-hero-content {
+                padding: 0 25px;
+                margin-top: 50px;
+            }
+            .rooms-subtitle {
+                font-size: 11px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+            .rooms-title {
+                font-size: 48px;
+                letter-spacing: 2px;
+            }
+        }
+        /* ======================================================
+    TABLET
+    ====================================================== */
+        
+        @media(min-width:769px) and (max-width:1024px) {
+            .rooms-hero {
+                height: 52vh;
+            }
+            .rooms-hero-content {
+                padding-left: 40px;
+            }
+            .rooms-title {
+                font-size: 68px;
+            }
+            .rooms-subtitle {
+                font-size: 12px;
+                letter-spacing: 5px;
+            }
+        }
+        /* ======================================================
+    CHECK NOW BUTTON
+    ====================================================== */
+        
+        .hero-check-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 16px 42px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ffffff;
+            background: #b8863f;
+            border: 1px solid #b8863f;
+            border-radius: 2px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background .35s ease, color .35s ease, border-color .35s ease;
+        }
+        
+        .hero-check-btn:hover {
+            background: #9c6f30;
+            border-color: #9c6f30;
+            color: #ffffff;
+        }
+        
+        @media(max-width:768px) {
+            .hero-check-btn {
+                margin-top: 20px;
+                padding: 13px 28px;
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
+        }
+        /* ======================================================
+    FOOTER (sama seperti halaman utama)
+    ====================================================== */
+        
+        .site-footer-top {
+            padding: 70px 24px 60px;
+            background: #fdfaf4;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+        
+        .site-footer-top.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .footer-social-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 44px;
+        }
+        
+        .footer-social-row a {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1px solid #c9a35a;
+            color: #b8863f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background .35s ease, color .35s ease, transform .35s ease;
+        }
+        
+        .footer-social-row a:hover {
+            background: linear-gradient(135deg, #c9a35a, #b8863f);
+            color: #ffffff;
+            transform: translateY(-4px);
+        }
+        
+        .footer-newsletter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        
+        .footer-newsletter-label {
+            font-family: 'Cinzel', serif;
+            font-style: italic;
+            font-size: 16px;
+            color: #444;
+            white-space: nowrap;
+        }
+        
+        .footer-newsletter-form {
+            display: flex;
+            gap: 10px;
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        .footer-newsletter-form input {
+            flex: 1;
+            border: 1px solid #ddd0b3;
+            background: #ffffff;
+            padding: 13px 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13.5px;
+            color: #333;
+            outline: none;
+            transition: border-color .3s ease;
+        }
+        
+        .footer-newsletter-form input:focus {
+            border-color: #c9a35a;
+        }
+        
+        .footer-subscribe-btn {
+            border: none;
+            background: linear-gradient(135deg, #c9a35a, #b8863f);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            padding: 0 26px;
+            cursor: pointer;
+            transition: filter .3s ease, transform .3s ease;
+            white-space: nowrap;
+        }
+        
+        .footer-subscribe-btn:hover {
+            filter: brightness(1.08);
+            transform: translateY(-2px);
+        }
+        
+        .site-footer-main {
+            background: #1c1a17;
+            padding: 70px 24px 30px;
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .7s ease .1s, transform .7s ease .1s;
+        }
+        
+        .site-footer-main.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .footer-main-grid {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        
+        @media (max-width: 991.98px) {
+            .footer-main-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px 30px;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .footer-main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer-col-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 14px;
+        }
+        
+        .footer-col-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 34px;
+            height: 2px;
+            background: #c9a35a;
+        }
+        
+        .footer-address-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .footer-address-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #b7b2a8;
+        }
+        
+        .footer-address-list i {
+            color: #c9a35a;
+            margin-top: 3px;
+            font-size: 13px;
+            flex: 0 0 auto;
+        }
+        
+        .footer-address-list a {
+            color: #b7b2a8;
+            text-decoration: none;
+            transition: color .3s ease;
+        }
+        
+        .footer-address-list a:hover {
+            color: #e8cf9c;
+        }
+        
+        .footer-link-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .footer-link-list li {
+            margin-bottom: 13px;
+        }
+        
+        .footer-link-list a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            letter-spacing: .5px;
+            color: #948f84;
+            text-decoration: none;
+            transition: color .3s ease, padding-left .3s ease;
+        }
+        
+        .footer-link-list a:hover {
+            color: #e8cf9c;
+            padding-left: 4px;
+        }
+        
+        .footer-copyright {
+            max-width: 1240px;
+            margin: 50px auto 0;
+            padding-top: 26px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            letter-spacing: .5px;
+            color: #7d786e;
+        }
+        
+        @media (max-width: 575.98px) {
+            .footer-newsletter {
+                flex-direction: column;
+            }
+            .footer-newsletter-label {
+                white-space: normal;
+            }
+        }
+        /* ======================================================
+    FLOATING WHATSAPP BUTTON
+    ====================================================== */
+        
+        .floating-whatsapp {
+            position: fixed;
+            right: 26px;
+            bottom: 26px;
+            z-index: 1300;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25d366, #1ebe5b);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            text-decoration: none;
+            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        
+        .floating-whatsapp::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.55);
+            animation: waPulse 2.2s ease-out infinite;
+        }
+        
+        .floating-whatsapp:hover {
+            color: #ffffff;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.55);
+        }
+        
+        @keyframes waPulse {
+            0% {
+                transform: scale(1);
+                opacity: .8;
+            }
+            100% {
+                transform: scale(1.6);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .floating-whatsapp {
+                right: 16px;
+                bottom: 16px;
+                width: 52px;
+                height: 52px;
+                font-size: 23px;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .site-footer-top,
+            .site-footer-main,
+            .footer-social-row a,
+            .footer-newsletter-form input,
+            .footer-subscribe-btn,
+            .footer-address-list a,
+            .footer-link-list a,
+            .floating-whatsapp,
+            .floating-whatsapp::before {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ======================================================
+    HERO
+    ====================================================== -->
+
+    <section class="rooms-hero">
+
+        <!-- NAVBAR (persis sama dengan navbar Hotel Salak) -->
+        <nav class="navbar">
+
+            <a class="navbar-brand" href="#">
+                <img src="logo_salak-removebg-preview.png" alt="" class="brand-logo">
+            </a>
+
+            <!-- HAMBURGER (muncul di tablet & hp) -->
+            <button class="navbar-toggle" id="navbarToggle" aria-label="Buka menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-menu" id="navMenu">
+
+                <!-- ABOUT US -->
+                <div class="nav-item">
+                    <a class="nav-link" onclick="toggleMenu(this)">
+                        ABOUT US <span class="arrow">▾</span>
+                    </a>
+                    <div class="dropdown">
+                        <a href="#">Hotel Profile</a>
+                        <a href="#">History</a>
+                        <a href="#">Hotel Facilities</a>
+                        <a href="#">Contact Us</a>
+                    </div>
+                </div>
+
+                <!-- ROOMS -->
+                <div class="nav-item">
+                    <a class="nav-link" onclick="toggleMenu(this)">
+                        ROOMS & SUITES <span class="arrow">▾</span>
+                    </a>
+                    <div class="dropdown">
+                        <a href="rooms.html">Deluxe Room</a>
+                        <a href="rooms.html">Executive Room</a>
+                        <a href="rooms.html">Suite Room</a>
+                    </div>
+                </div>
+
+                <!-- DINING -->
+                <div class="nav-item">
+                    <a class="nav-link" onclick="toggleMenu(this)">
+                        DINING <span class="arrow">▾</span>
+                    </a>
+                    <div class="dropdown">
+                        <a href="#">Restaurant</a>
+                        <a href="#">Cafe</a>
+                        <a href="#">Room Service</a>
+                    </div>
+                </div>
+
+                <!-- MEETING -->
+                <div class="nav-item">
+                    <a class="nav-link" onclick="toggleMenu(this)">
+                        MEETINGS & EVENTS <span class="arrow">▾</span>
+                    </a>
+                    <div class="dropdown">
+                        <a href="meting.html">Meeting Room</a>
+                        <a href="#">Special Meeting Offers</a>
+                        <a href="#">Events</a>
+                    </div>
+                </div>
+
+                <!-- WEDDINGS -->
+                <div class="nav-item">
+                    <a class="nav-link" onclick="toggleMenu(this)">
+                        WEDDINGS <span class="arrow">▾</span>
+                    </a>
+                    <div class="dropdown">
+                        <a href="wedding.html">Wedding Package</a>
+                        <a href="wedding.html">Wedding Venue</a>
+                        <a href="wedding.html">Wedding Offers</a>
+                    </div>
+                </div>
+
+                <!-- OFFERS -->
+                <div class="nav-item">
+                    <a class="nav-link" onclick="toggleMenu(this)">
+                        OFFERS <span class="arrow">▾</span>
+                    </a>
+                    <div class="dropdown">
+                        <a href="promosi.html">Special Offers</a>
+                        <a href="promosi.html">Weekend Package</a>
+                        <a href="promosi.html">Member Offers</a>
+                    </div>
+                </div>
+
+                <!-- MORE -->
+                <div class="nav-item">
+                    <a class="nav-link" onclick="toggleMenu(this)">
+                        MORE <span class="arrow">▾</span>
+                    </a>
+                    <div class="dropdown">
+                        <a href="#">Reward Points</a>
+                        <a href="#">Salak Privilege Card</a>
+                        <a href="galeri.html">Blog</a>
+                        <a href="#">Catering</a>
+                        <a href="#">Reservation Chat</a>
+                        <a href="#">Newsletters</a>
+                        <a href="#">Apps</a>
+                        <a href="#">Sign In</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </nav>
+
+        <!-- OVERLAY (mobile/tablet) -->
+        <div class="nav-overlay" id="navOverlay"></div>
+
+        <div class="rooms-hero-content">
+
+            <div class="rooms-subtitle">
+                SPARK UP YOUR CREATIVITY !
+            </div>
+
+            <h1 class="rooms-title">
+                Meeting Rooms
+            </h1>
+
+            <button class="hero-check-btn">
+                CHECK NOW
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ======================================================
+    FOOTER (sama seperti halaman utama)
+    ====================================================== -->
+
+    <div class="site-footer-top" id="footerTop">
+        <div class="footer-social-row">
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+        </div>
+
+        <div class="footer-newsletter">
+            <span class="footer-newsletter-label">Sign up to receive Special Offers:</span>
+            <form class="footer-newsletter-form" onsubmit="return false;">
+                <input type="email" placeholder="Enter your e-mail address" required>
+                <button type="submit" class="footer-subscribe-btn">SUBSCRIBE</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="site-footer-main" id="footerMain">
+        <div class="footer-main-grid">
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Hotel Salak The Heritage</h4>
+                <ul class="footer-address-list">
+                    <li><i class="fa-solid fa-location-dot"></i> Jl. Ir. H. Juanda No.8, 16121 Bogor - Indonesia</li>
+                    <li><i class="fa-solid fa-phone"></i> Call Us: Telp. +62 251 8373 111</li>
+                    <li><i class="fa-solid fa-fax"></i> Fax: +62 251 8374 111</li>
+                    <li><i class="fa-brands fa-whatsapp"></i> WA Hotel Information: +62 812 8701 3896</li>
+                    <li><i class="fa-solid fa-envelope"></i> <a href="mailto:marketing@hotelsalak.co.id">marketing@hotelsalak.co.id</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">About Us</h4>
+                <ul class="footer-link-list">
+                    <li><a href="#">History</a></li>
+                    <li><a href="#">Background</a></li>
+                    <li><a href="#">Management</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Awards &amp; Certificates</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">For Business</h4>
+                <ul class="footer-link-list">
+                    <li><a href="#">Investment</a></li>
+                    <li><a href="#">News &amp; Press</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Affiliates</h4>
+                <ul class="footer-link-list">
+                    <li><a href="#">Tuquh.com</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-copyright">
+            Copyright © 2026 IT Hotel Salak The Heritage
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <!-- Ganti nomor di href (format: 62xxxxxxxxxxx, tanpa tanda + atau 0 di depan) sebelum go-live -->
+    <a href="https://wa.me/" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Hubungi kami via WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        /* =========================================
+                   NAVBAR DROPDOWN
+                ========================================= */
+
+        function toggleMenu(element) {
+
+            const currentItem = element.parentElement;
+            const allItems = document.querySelectorAll('.nav-item');
+
+            allItems.forEach(function(item) {
+                if (item !== currentItem) {
+                    item.classList.remove('active');
+                }
+            });
+
+            currentItem.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-item')) {
+                document.querySelectorAll('.nav-item')
+                    .forEach(function(item) {
+                        item.classList.remove('active');
+                    });
+            }
+        });
+
+        /* =========================================
+           HAMBURGER MENU (mobile/tablet)
+        ========================================= */
+
+        const navbarToggle = document.getElementById('navbarToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function closeMobileMenu() {
+            navbarToggle.classList.remove('open');
+            navMenu.classList.remove('open');
+            navOverlay.classList.remove('show');
+
+            document.querySelectorAll('.nav-item')
+                .forEach(function(item) {
+                    item.classList.remove('active');
+                });
+        }
+
+        function openMobileMenu() {
+            navbarToggle.classList.add('open');
+            navMenu.classList.add('open');
+            navOverlay.classList.add('show');
+        }
+
+        navbarToggle.addEventListener('click', function(event) {
+            event.stopPropagation();
+
+            if (navMenu.classList.contains('open')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        navOverlay.addEventListener('click', closeMobileMenu);
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 992) {
+                closeMobileMenu();
+            }
+        });
+
+        /* =========================================
+           NAVBAR SCROLL BEHAVIOR
+        ========================================= */
+
+        const navbar = document.querySelector('.navbar');
+        const heroSection = document.querySelector('.rooms-hero');
+
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', function() {
+
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            let heroHeight = heroSection.offsetHeight;
+
+            if (scrollTop < heroHeight) {
+                navbar.classList.remove('navbar-visible');
+                navbar.classList.remove('navbar-scrolled');
+                navbar.classList.remove('navbar-hidden');
+            } else {
+                navbar.classList.add('navbar-visible');
+                navbar.classList.add('navbar-scrolled');
+
+                if (scrollTop > lastScrollTop) {
+                    navbar.classList.add('navbar-hidden');
+                    closeMobileMenu();
+                } else {
+                    navbar.classList.remove('navbar-hidden');
+                }
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+
+        });
+
+        /* =========================================
+           FOOTER — SCROLL REVEAL
+        ========================================= */
+
+        const footerTop = document.getElementById('footerTop');
+        const footerMain = document.getElementById('footerMain');
+
+        if (footerTop && footerMain) {
+            const footerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        footerObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            footerObserver.observe(footerTop);
+            footerObserver.observe(footerMain);
+        }
+    </script>
+
+</body>
+
+</html>
