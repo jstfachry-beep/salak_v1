@@ -151,14 +151,6 @@
             font-size: calc(var(--logo-h) * 0.21);
             margin-left: 5px;
         }
-        
-        @media (max-width: 575.98px) {
-            html,
-            body {
-                overflow-x: hidden;
-                max-width: 100%;
-            }
-        }
         /* ===== HAMBURGER (mobile/tablet) ===== */
         
         .navbar-toggle {
@@ -1703,6 +1695,19 @@
                 transition: none !important;
             }
         }
+        
+        @media (max-width: 575.98px) {
+            html {
+                overflow-x: clip;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .page-wrapper {
+                overflow-x: hidden;
+                max-width: 100%;
+            }
+        }
     </style>
 
 </head>
@@ -1830,7 +1835,6 @@
         <!-- OVERLAY (mobile/tablet) -->
         <div class="nav-overlay" id="navOverlay"></div>
 
-
         <!-- CONTENT -->
         <div class="hero-content">
             <div class="hero-subtitle">
@@ -1852,557 +1856,561 @@
 
     </section>
 
-    <!-- BOOKING -->
-    <section class="booking-wrapper py-4">
-        <div class="container">
+    <!-- WRAPPER: seluruh konten di bawah hero, agar overflow-x mobile bisa dikontrol dari satu tempat -->
+    <div class="page-wrapper">
 
-            <div class="booking-box shadow-lg p-3 p-lg-4">
+        <!-- BOOKING -->
+        <section class="booking-wrapper py-4">
+            <div class="container">
 
-                <div class="row g-3 align-items-center">
+                <div class="booking-box shadow-lg p-3 p-lg-4">
 
-                    <!-- Check In -->
-                    <div class="col-lg-2 col-md-4">
-                        <div class="booking-item">
-                            <div class="booking-label">
-                                <i class="fa-regular fa-calendar-days"></i> Check In
+                    <div class="row g-3 align-items-center">
+
+                        <!-- Check In -->
+                        <div class="col-lg-2 col-md-4">
+                            <div class="booking-item">
+                                <div class="booking-label">
+                                    <i class="fa-regular fa-calendar-days"></i> Check In
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Check Out -->
-                    <div class="col-lg-2 col-md-4">
-                        <div class="booking-item">
-                            <div class="booking-label">
-                                <i class="fa-regular fa-calendar-days"></i> Check Out
+                        <!-- Check Out -->
+                        <div class="col-lg-2 col-md-4">
+                            <div class="booking-item">
+                                <div class="booking-label">
+                                    <i class="fa-regular fa-calendar-days"></i> Check Out
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Guests -->
-                    <div class="col-lg-2 col-md-4">
-                        <div class="booking-item">
-                            <div class="booking-label">
-                                <i class="fa-solid fa-user"></i> Guests
+                        <!-- Guests -->
+                        <div class="col-lg-2 col-md-4">
+                            <div class="booking-item">
+                                <div class="booking-label">
+                                    <i class="fa-solid fa-user"></i> Guests
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Children -->
-                    <div class="col-lg-2 col-md-4">
-                        <div class="booking-item">
-                            <div class="booking-label">
-                                <i class="fa-solid fa-child"></i> Children
+                        <!-- Children -->
+                        <div class="col-lg-2 col-md-4">
+                            <div class="booking-item">
+                                <div class="booking-label">
+                                    <i class="fa-solid fa-child"></i> Children
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Room -->
-                    <div class="col-lg-2 col-md-4">
-                        <div class="booking-item">
-                            <div class="booking-label">
-                                <i class="fa-solid fa-bed"></i> Room
+                        <!-- Room -->
+                        <div class="col-lg-2 col-md-4">
+                            <div class="booking-item">
+                                <div class="booking-label">
+                                    <i class="fa-solid fa-bed"></i> Room
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Button -->
-                    <div class="col-lg-2 col-md-4">
-                        <button class="check-btn w-100">
+                        <!-- Button -->
+                        <div class="col-lg-2 col-md-4">
+                            <button class="check-btn w-100">
             CHECK NOW
           </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPECIAL OFFERS (baru) -->
+        <section class="offers-section" id="offersSection">
+            <div class="offers-container">
+
+                <div class="offers-eyebrow">Penawaran Pilihan</div>
+                <h2 class="offers-title">Special Offers</h2>
+                <p class="offers-sub">
+                    Rangkaian paket eksklusif Hotel Salak The Heritage — dari akomodasi, pernikahan, hingga pertemuan bisnis, dirancang untuk setiap momen penting Anda.
+                </p>
+
+                <div class="offers-grid">
+
+                    <a class="offer-card" href="promosi.html">
+                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1200&auto=format&fit=crop" alt="Work & Study Anywhere">
+                        <div class="offer-body">
+                            <span class="offer-tag">Paket Kerja &amp; Belajar</span>
+                            <h3 class="offer-title">Work &amp; Study Anywhere</h3>
+                            <span class="offer-link">Offer Details <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <a class="offer-card" href="wedding.html">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" alt="Memorable Wedding Package">
+                        <div class="offer-body">
+                            <span class="offer-tag">Paket Pernikahan</span>
+                            <h3 class="offer-title">Memorable Wedding Package</h3>
+                            <span class="offer-link">Offer Details <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <a class="offer-card" href="meting.html">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Meetings, Coordination and Training">
+                        <div class="offer-body">
+                            <span class="offer-tag">Meeting &amp; Event</span>
+                            <h3 class="offer-title">Meetings, Coordination &amp; Training</h3>
+                            <span class="offer-link">Offer Details <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <a class="offer-card" href="wedding.html">
+                        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&auto=format&fit=crop" alt="Plan Your Perfect Wedding">
+                        <div class="offer-body">
+                            <span class="offer-tag">Wedding Planning</span>
+                            <h3 class="offer-title">Plan Your Perfect Wedding</h3>
+                            <span class="offer-link">Offer Details <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <a class="offer-card" href="mentahan.html">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop" alt="Why Should You Choose Hotel Salak">
+                        <div class="offer-body">
+                            <span class="offer-tag">Hotel Profile</span>
+                            <h3 class="offer-title">Why Should You Choose Us</h3>
+                            <span class="offer-link">Offer Details <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <a class="offer-card" href="galeri.html">
+                        <img src="https://images.unsplash.com/photo-1580977276076-ae4b8c219b8e?q=80&w=1200&auto=format&fit=crop" alt="Explore Local Attractions in Bogor">
+                        <div class="offer-body">
+                            <span class="offer-tag">Jelajah Bogor</span>
+                            <h3 class="offer-title">Explore Local Attractions in Bogor</h3>
+                            <span class="offer-link">Offer Details <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- HOTEL OVERVIEW (baru) -->
+        <section class="overview-section" id="overviewSection">
+            <div class="overview-container">
+
+                <div class="overview-header">
+                    <div class="overview-heading">Hotel Overview</div>
+
+                    <!-- TOMBOL TRANSLATE EN / ID -->
+                    <div class="lang-toggle" id="langToggle" data-active="en">
+                        <span class="lang-pill"></span>
+                        <button type="button" data-lang="en"><i class="fa-solid fa-globe"></i>EN</button>
+                        <button type="button" data-lang="id">ID</button>
+                    </div>
+                </div>
+
+                <div class="overview-grid">
+
+                    <!-- LEFT: FOTO + DESKRIPSI -->
+                    <div class="overview-photo-wrap">
+                        <img class="overview-photo" src="1.jpg" alt="Hotel Salak The Heritage">
+
+                        <h3 class="overview-name">Hotel Salak The Heritage</h3>
+
+                        <div class="overview-text">
+                            <p data-en="Hotel Salak The Heritage is a contemporary establishment that embodies a rich tapestry of historical culture and values. It is strategically situated in the heart of Bogor, Indonesia, in proximity to the Presidential Palace and the esteemed Bogor Botanical Garden."
+                                data-id="Hotel Salak The Heritage adalah hotel modern yang memadukan kekayaan budaya dan nilai sejarah. Berlokasi strategis di jantung Kota Bogor, tepat di dekat Istana Kepresidenan dan Kebun Raya Bogor yang terkenal.">
+                                Hotel Salak The Heritage is a contemporary establishment that embodies a rich tapestry of historical culture and values. It is strategically situated in the heart of Bogor, Indonesia, in proximity to the Presidential Palace and the esteemed Bogor Botanical
+                                Garden.
+                            </p>
+                            <p data-en="The hotel boasts 140 guest rooms, offering a variety of luxurious accommodation options. Guests are invited to indulge in culinary experiences at any of our five restaurants, each distinguished by its unique ambiance and delectable cuisine. Hotel Salak The Heritage serves as an ideal venue in Bogor for hosting business events, conferences, and exhibitions, with access to 15 meeting rooms and 2 ballrooms. Additional on-site amenities include a fitness center, a swimming pool, a ladies-only ChocolaSpa, and a Business Center."
+                                data-id="Hotel ini memiliki 140 kamar tamu dengan berbagai pilihan akomodasi mewah. Tamu dapat menikmati pengalaman kuliner di lima restoran kami, masing-masing dengan suasana dan cita rasa khas. Hotel Salak The Heritage menjadi lokasi ideal di Bogor untuk acara bisnis, konferensi, dan pameran, dengan akses ke 15 ruang pertemuan dan 2 ballroom. Fasilitas tambahan meliputi pusat kebugaran, kolam renang, ChocolaSpa khusus wanita, dan Business Center.">
+                                The hotel boasts 140 guest rooms, offering a variety of luxurious accommodation options. Guests are invited to indulge in culinary experiences at any of our five restaurants, each distinguished by its unique ambiance and delectable cuisine. Hotel Salak
+                                The Heritage serves as an ideal venue in Bogor for hosting business events, conferences, and exhibitions, with access to 15 meeting rooms and 2 ballrooms. Additional on-site amenities include a fitness center, a swimming
+                                pool, a ladies-only ChocolaSpa, and a Business Center.
+                            </p>
+                            <p data-en="The hotel's advantageous location, refined facilities, and historical significance render it an exemplary choice for visitors during their stay in Bogor." data-id="Lokasi yang strategis, fasilitas yang lengkap, dan nilai sejarah menjadikan hotel ini pilihan terbaik bagi para tamu selama berada di Bogor.">
+                                The hotel's advantageous location, refined facilities, and historical significance render it an exemplary choice for visitors during their stay in Bogor.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: WHY CHOOSE LIST -->
+                    <div class="overview-list-wrap">
+                        <h4 class="overview-list-title" data-en="Why You Should Choose Hotel Salak The Heritage" data-id="Mengapa Memilih Hotel Salak The Heritage">
+                            Why You Should Choose Hotel Salak The Heritage
+                        </h4>
+
+                        <ul class="overview-list">
+
+                            <li>
+                                <div class="overview-num">1</div>
+                                <div>
+                                    <p class="overview-point-title" data-en="Prime Location" data-id="Lokasi Utama">Prime Location</p>
+                                    <p class="overview-point-text" data-en="Situated in the prestigious area of Bogor City, right in front of the Bogor Presidential Palace and just steps away from the Botanical Garden entrance." data-id="Berada di kawasan bergengsi Kota Bogor, tepat di depan Istana Kepresidenan dan hanya beberapa langkah dari pintu masuk Kebun Raya Bogor.">
+                                        Situated in the prestigious area of Bogor City, right in front of the Bogor Presidential Palace and just steps away from the Botanical Garden entrance.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="overview-num">2</div>
+                                <div>
+                                    <p class="overview-point-title" data-en="Flood-Free Haven" data-id="Bebas Banjir">Flood-Free Haven</p>
+                                    <p class="overview-point-text" data-en="Hotel Salak The Heritage is located in a flood-free zone, ensuring a worry-free stay." data-id="Hotel Salak The Heritage berada di zona bebas banjir, memberikan ketenangan selama menginap.">
+                                        Hotel Salak The Heritage is located in a flood-free zone, ensuring a worry-free stay.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="overview-num">3</div>
+                                <div>
+                                    <p class="overview-point-title" data-en="Versatile Meeting Spaces" data-id="Ruang Pertemuan Serbaguna">Versatile Meeting Spaces</p>
+                                    <p class="overview-point-text" data-en="Suitable for hosting a small team meeting or a large international event." data-id="Cocok untuk rapat tim kecil maupun acara internasional berskala besar.">
+                                        Suitable for hosting a small team meeting or a large international event.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="overview-num">4</div>
+                                <div>
+                                    <p class="overview-point-title" data-en="International Expertise" data-id="Keahlian Internasional">International Expertise</p>
+                                    <p class="overview-point-text" data-en="With a wealth of experience, our professional staff will ensure your event runs smoothly and flawlessly." data-id="Didukung staf profesional berpengalaman yang memastikan acara Anda berjalan lancar dan sempurna.">
+                                        With a wealth of experience, our professional staff will ensure your event runs smoothly and flawlessly.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="overview-num">5</div>
+                                <div>
+                                    <p class="overview-point-title" data-en="Ultra-Fast Wi-Fi" data-id="Wi-Fi Super Cepat">Ultra-Fast Wi-Fi</p>
+                                    <p class="overview-point-text" data-en="Stay connected with our lightning-fast Wi-Fi." data-id="Tetap terhubung dengan koneksi Wi-Fi kami yang sangat cepat.">
+                                        Stay connected with our lightning-fast Wi-Fi.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="overview-num">6</div>
+                                <div>
+                                    <p class="overview-point-title" data-en="Indulgent Coffee Breaks" data-id="Coffee Break Istimewa">Indulgent Coffee Breaks</p>
+                                    <p class="overview-point-text" data-en="Enjoy a special treat with our delicious coffee break pastries, featuring the famous Triple Combo Klapertaart, a local delicacy." data-id="Nikmati camilan lezat saat coffee break, termasuk Triple Combo Klapertaart yang legendaris.">
+                                        Enjoy a special treat with our delicious coffee break pastries, featuring the famous Triple Combo Klapertaart, a local delicacy.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="overview-num">7</div>
+                                <div>
+                                    <p class="overview-point-title" data-en="Multilingual Staff" data-id="Staf Multibahasa">Multilingual Staff</p>
+                                    <p class="overview-point-text" data-en="Our friendly and professional staff, including English-speaking representatives, are dedicated to providing you with exceptional service." data-id="Tim kami yang ramah, termasuk staf berbahasa Inggris, siap memberikan pelayanan terbaik.">
+                                        Our friendly and professional staff, including English-speaking representatives, are dedicated to providing you with exceptional service.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="overview-num">8</div>
+                                <div>
+                                    <p class="overview-point-title" data-en="Romantic Ambiance" data-id="Suasana Romantis">Romantic Ambiance</p>
+                                    <p class="overview-point-text" data-en="Escape to a world of romance with our charming and elegant ambiance, perfect for a relaxing getaway or a special occasion." data-id="Rasakan suasana elegan dan romantis, sempurna untuk liburan santai maupun momen spesial.">
+                                        Escape to a world of romance with our charming and elegant ambiance, perfect for a relaxing getaway or a special occasion.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="overview-num">9</div>
+                                <div>
+                                    <p class="overview-point-title" data-en="Clean and Healthy Environment" data-id="Lingkungan Bersih &amp; Sehat">Clean and Healthy Environment</p>
+                                    <p class="overview-point-text" data-en="Enjoy a clean and healthy environment with our cutting-edge Negative Ion technology, which effectively kills viruses and germs in the air, ensuring your well-being." data-id="Nikmati udara bersih berkat teknologi Negative Ion yang efektif membunuh virus dan kuman di udara.">
+                                        Enjoy a clean and healthy environment with our cutting-edge Negative Ion technology, which effectively kills viruses and germs in the air, ensuring your well-being.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="overview-num">10</div>
+                                <div>
+                                    <p class="overview-point-title" data-en="Convenient Shuttle Service" data-id="Layanan Shuttle Gratis">Convenient Shuttle Service</p>
+                                    <p class="overview-point-text" data-en="Get around easily with our complimentary shuttle service to and from Bogor Train Station and Damri Bus Terminal in Bogor." data-id="Kemudahan akses dengan layanan shuttle gratis dari dan ke Stasiun Kereta Bogor serta Terminal Bus Damri.">
+                                        Get around easily with our complimentary shuttle service to and from Bogor Train Station and Damri Bus Terminal in Bogor.
+                                    </p>
+                                </div>
+                            </li>
+
+                        </ul>
                     </div>
 
                 </div>
+            </div>
+        </section>
+
+        <!-- ROOMS & SUITES (baru) -->
+        <section class="rooms-section" id="roomsSection">
+            <div class="rooms-container">
+
+                <div class="rooms-header">
+                    <div class="rooms-heading">Rooms &amp; Suites</div>
+                    <a href="rooms.html" class="rooms-viewall">
+                        View All Rooms <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="rooms-grid">
+
+                    <!-- ROOM 1 -->
+                    <div class="flip-room-card">
+                        <div class="flip-room-inner">
+
+                            <!-- FRONT -->
+                            <div class="flip-room-front">
+                                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=1200&auto=format&fit=crop" alt="Superior Room">
+                                <div class="book-tag">BOOK</div>
+                                <div class="front-content">
+                                    <h3 class="front-title">Superior Room</h3>
+                                    <button class="flip-btn">DETAILS</button>
+                                </div>
+                            </div>
+
+                            <!-- BACK -->
+                            <div class="flip-room-back">
+                                <h3 class="back-title">Superior Room</h3>
+                                <p class="back-desc">Kamar elegan bergaya modern dengan kenyamanan premium dan suasana yang menenangkan.</p>
+                                <div class="back-info">
+                                    <div><i class="fa-solid fa-user-group"></i> 1-2 Orang</div>
+                                    <div><i class="fa-solid fa-wifi"></i> Free Wifi</div>
+                                    <div><i class="fa-solid fa-bed"></i> King Bed</div>
+                                    <div><i class="fa-solid fa-mug-saucer"></i> Breakfast</div>
+                                </div>
+                                <button class="close-btn"><i class="fa-solid fa-xmark"></i> CLOSE</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ROOM 2 -->
+                    <div class="flip-room-card">
+                        <div class="flip-room-inner">
+
+                            <!-- FRONT -->
+                            <div class="flip-room-front">
+                                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop" alt="Salak View Room">
+                                <div class="book-tag">BOOK</div>
+                                <div class="front-content">
+                                    <h3 class="front-title">Salak View Room</h3>
+                                    <button class="flip-btn">DETAILS</button>
+                                </div>
+                            </div>
+
+                            <!-- BACK -->
+                            <div class="flip-room-back">
+                                <h3 class="back-title">Salak View Room</h3>
+                                <p class="back-desc">Kamar luas dengan pemandangan langsung ke arah Gunung Salak, desain elegan dan fasilitas premium.</p>
+                                <div class="back-info">
+                                    <div><i class="fa-solid fa-user-group"></i> 2 Orang</div>
+                                    <div><i class="fa-solid fa-wifi"></i> Premium Wifi</div>
+                                    <div><i class="fa-solid fa-tv"></i> Smart TV</div>
+                                    <div><i class="fa-solid fa-mug-saucer"></i> Breakfast</div>
+                                </div>
+                                <button class="close-btn"><i class="fa-solid fa-xmark"></i> CLOSE</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ROOM 3 -->
+                    <div class="flip-room-card">
+                        <div class="flip-room-inner">
+
+                            <!-- FRONT -->
+                            <div class="flip-room-front">
+                                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200&auto=format&fit=crop" alt="Colonial Executive Heritage">
+                                <div class="book-tag">BOOK</div>
+                                <div class="front-content">
+                                    <h3 class="front-title">Colonial Executive Heritage</h3>
+                                    <button class="flip-btn">DETAILS</button>
+                                </div>
+                            </div>
+
+                            <!-- BACK -->
+                            <div class="flip-room-back">
+                                <h3 class="back-title">Colonial Executive Heritage</h3>
+                                <p class="back-desc">Suite bergaya kolonial dengan sentuhan mewah, cocok untuk pengalaman menginap yang berkesan dan penuh sejarah.</p>
+                                <div class="back-info">
+                                    <div><i class="fa-solid fa-user-group"></i> 2-3 Orang</div>
+                                    <div><i class="fa-solid fa-wifi"></i> Free Wifi</div>
+                                    <div><i class="fa-solid fa-mug-saucer"></i> Coffee Set</div>
+                                    <div><i class="fa-solid fa-bath"></i> Bathtub</div>
+                                </div>
+                                <button class="close-btn"><i class="fa-solid fa-xmark"></i> CLOSE</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS (baru) -->
+        <section class="testimonial-section" id="testimonialSection">
+            <div class="testimonial-container">
+
+                <div class="testimonial-header">
+                    <div class="testimonial-eyebrow">Ulasan Tamu</div>
+                    <h2 class="testimonial-title">What Customer Say</h2>
+                </div>
+
+                <div class="testimonial-grid">
+
+                    <!-- TESTIMONI 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote-mark"><i class="fa-solid fa-quote-right"></i></div>
+                        <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Pelayanan sangat ramah dan kamar sangat nyaman. Lokasinya strategis, dekat dengan Kebun Raya Bogor dan Istana. Pasti akan kembali lagi."
+                        </p>
+                        <div>
+                            <p class="testimonial-name">Mrs. Thalia</p>
+                            <p class="testimonial-role">Leisure Guest</p>
+                        </div>
+                    </div>
+
+                    <!-- TESTIMONI 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote-mark"><i class="fa-solid fa-quote-right"></i></div>
+                        <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Ruang meeting sangat representatif dan staf sangat membantu selama acara berlangsung. Sarapannya juga enak dan variatif."
+                        </p>
+                        <div>
+                            <p class="testimonial-name">Bpk. Andra</p>
+                            <p class="testimonial-role">Business Guest</p>
+                        </div>
+                    </div>
+
+                    <!-- TESTIMONI 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote-mark"><i class="fa-solid fa-quote-right"></i></div>
+                        <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Suasana hotel yang bersejarah tapi tetap modern. Kolam renang dan spa-nya juga menyegarkan setelah acara pernikahan kami."
+                        </p>
+                        <div>
+                            <p class="testimonial-name">Mrs. Sarah</p>
+                            <p class="testimonial-role">Wedding Guest</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER (baru) -->
+
+        <!-- FOOTER TOP: SOSIAL + NEWSLETTER -->
+        <div class="site-footer-top" id="footerTop">
+            <div class="footer-social-row">
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+            </div>
+
+            <div class="footer-newsletter">
+                <span class="footer-newsletter-label">Sign up to receive Special Offers:</span>
+                <form class="footer-newsletter-form" onsubmit="return false;">
+                    <input type="email" placeholder="Enter your e-mail address" required>
+                    <button type="submit" class="footer-subscribe-btn">SUBSCRIBE</button>
+                </form>
             </div>
         </div>
-    </section>
 
-    <!-- SPECIAL OFFERS (baru) -->
-    <section class="offers-section" id="offersSection">
-        <div class="offers-container">
+        <!-- FOOTER MAIN: 4 KOLOM -->
+        <footer class="site-footer-main" id="footerMain">
+            <div class="footer-main-grid">
 
-            <div class="offers-eyebrow">Penawaran Pilihan</div>
-            <h2 class="offers-title">Special Offers</h2>
-            <p class="offers-sub">
-                Rangkaian paket eksklusif Hotel Salak The Heritage — dari akomodasi, pernikahan, hingga pertemuan bisnis, dirancang untuk setiap momen penting Anda.
-            </p>
-
-            <div class="offers-grid">
-
-                <a class="offer-card" href="promosi.html">
-                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1200&auto=format&fit=crop" alt="Work & Study Anywhere">
-                    <div class="offer-body">
-                        <span class="offer-tag">Paket Kerja &amp; Belajar</span>
-                        <h3 class="offer-title">Work &amp; Study Anywhere</h3>
-                        <span class="offer-link">Offer Details <i class="fa-solid fa-arrow-right"></i></span>
-                    </div>
-                </a>
-
-                <a class="offer-card" href="wedding.html">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" alt="Memorable Wedding Package">
-                    <div class="offer-body">
-                        <span class="offer-tag">Paket Pernikahan</span>
-                        <h3 class="offer-title">Memorable Wedding Package</h3>
-                        <span class="offer-link">Offer Details <i class="fa-solid fa-arrow-right"></i></span>
-                    </div>
-                </a>
-
-                <a class="offer-card" href="meting.html">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Meetings, Coordination and Training">
-                    <div class="offer-body">
-                        <span class="offer-tag">Meeting &amp; Event</span>
-                        <h3 class="offer-title">Meetings, Coordination &amp; Training</h3>
-                        <span class="offer-link">Offer Details <i class="fa-solid fa-arrow-right"></i></span>
-                    </div>
-                </a>
-
-                <a class="offer-card" href="wedding.html">
-                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&auto=format&fit=crop" alt="Plan Your Perfect Wedding">
-                    <div class="offer-body">
-                        <span class="offer-tag">Wedding Planning</span>
-                        <h3 class="offer-title">Plan Your Perfect Wedding</h3>
-                        <span class="offer-link">Offer Details <i class="fa-solid fa-arrow-right"></i></span>
-                    </div>
-                </a>
-
-                <a class="offer-card" href="mentahan.html">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop" alt="Why Should You Choose Hotel Salak">
-                    <div class="offer-body">
-                        <span class="offer-tag">Hotel Profile</span>
-                        <h3 class="offer-title">Why Should You Choose Us</h3>
-                        <span class="offer-link">Offer Details <i class="fa-solid fa-arrow-right"></i></span>
-                    </div>
-                </a>
-
-                <a class="offer-card" href="galeri.html">
-                    <img src="https://images.unsplash.com/photo-1580977276076-ae4b8c219b8e?q=80&w=1200&auto=format&fit=crop" alt="Explore Local Attractions in Bogor">
-                    <div class="offer-body">
-                        <span class="offer-tag">Jelajah Bogor</span>
-                        <h3 class="offer-title">Explore Local Attractions in Bogor</h3>
-                        <span class="offer-link">Offer Details <i class="fa-solid fa-arrow-right"></i></span>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- HOTEL OVERVIEW (baru) -->
-    <section class="overview-section" id="overviewSection">
-        <div class="overview-container">
-
-            <div class="overview-header">
-                <div class="overview-heading">Hotel Overview</div>
-
-                <!-- TOMBOL TRANSLATE EN / ID -->
-                <div class="lang-toggle" id="langToggle" data-active="en">
-                    <span class="lang-pill"></span>
-                    <button type="button" data-lang="en"><i class="fa-solid fa-globe"></i>EN</button>
-                    <button type="button" data-lang="id">ID</button>
-                </div>
-            </div>
-
-            <div class="overview-grid">
-
-                <!-- LEFT: FOTO + DESKRIPSI -->
-                <div class="overview-photo-wrap">
-                    <img class="overview-photo" src="1.jpg" alt="Hotel Salak The Heritage">
-
-                    <h3 class="overview-name">Hotel Salak The Heritage</h3>
-
-                    <div class="overview-text">
-                        <p data-en="Hotel Salak The Heritage is a contemporary establishment that embodies a rich tapestry of historical culture and values. It is strategically situated in the heart of Bogor, Indonesia, in proximity to the Presidential Palace and the esteemed Bogor Botanical Garden."
-                            data-id="Hotel Salak The Heritage adalah hotel modern yang memadukan kekayaan budaya dan nilai sejarah. Berlokasi strategis di jantung Kota Bogor, tepat di dekat Istana Kepresidenan dan Kebun Raya Bogor yang terkenal.">
-                            Hotel Salak The Heritage is a contemporary establishment that embodies a rich tapestry of historical culture and values. It is strategically situated in the heart of Bogor, Indonesia, in proximity to the Presidential Palace and the esteemed Bogor Botanical
-                            Garden.
-                        </p>
-                        <p data-en="The hotel boasts 140 guest rooms, offering a variety of luxurious accommodation options. Guests are invited to indulge in culinary experiences at any of our five restaurants, each distinguished by its unique ambiance and delectable cuisine. Hotel Salak The Heritage serves as an ideal venue in Bogor for hosting business events, conferences, and exhibitions, with access to 15 meeting rooms and 2 ballrooms. Additional on-site amenities include a fitness center, a swimming pool, a ladies-only ChocolaSpa, and a Business Center."
-                            data-id="Hotel ini memiliki 140 kamar tamu dengan berbagai pilihan akomodasi mewah. Tamu dapat menikmati pengalaman kuliner di lima restoran kami, masing-masing dengan suasana dan cita rasa khas. Hotel Salak The Heritage menjadi lokasi ideal di Bogor untuk acara bisnis, konferensi, dan pameran, dengan akses ke 15 ruang pertemuan dan 2 ballroom. Fasilitas tambahan meliputi pusat kebugaran, kolam renang, ChocolaSpa khusus wanita, dan Business Center.">
-                            The hotel boasts 140 guest rooms, offering a variety of luxurious accommodation options. Guests are invited to indulge in culinary experiences at any of our five restaurants, each distinguished by its unique ambiance and delectable cuisine. Hotel Salak
-                            The Heritage serves as an ideal venue in Bogor for hosting business events, conferences, and exhibitions, with access to 15 meeting rooms and 2 ballrooms. Additional on-site amenities include a fitness center, a swimming pool,
-                            a ladies-only ChocolaSpa, and a Business Center.
-                        </p>
-                        <p data-en="The hotel's advantageous location, refined facilities, and historical significance render it an exemplary choice for visitors during their stay in Bogor." data-id="Lokasi yang strategis, fasilitas yang lengkap, dan nilai sejarah menjadikan hotel ini pilihan terbaik bagi para tamu selama berada di Bogor.">
-                            The hotel's advantageous location, refined facilities, and historical significance render it an exemplary choice for visitors during their stay in Bogor.
-                        </p>
-                    </div>
+                <!-- KOLOM 1: HOTEL INFO -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Hotel Salak The Heritage</h4>
+                    <ul class="footer-address-list">
+                        <li><i class="fa-solid fa-location-dot"></i> Jl. Ir. H. Juanda No.8, 16121 Bogor - Indonesia</li>
+                        <li><i class="fa-solid fa-phone"></i> Call Us: Telp. +62 251 8373 111</li>
+                        <li><i class="fa-solid fa-fax"></i> Fax: +62 251 8374 111</li>
+                        <li><i class="fa-brands fa-whatsapp"></i> WA Hotel Information: +62 812 8701 3896</li>
+                        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:marketing@hotelsalak.co.id">marketing@hotelsalak.co.id</a></li>
+                    </ul>
                 </div>
 
-                <!-- RIGHT: WHY CHOOSE LIST -->
-                <div class="overview-list-wrap">
-                    <h4 class="overview-list-title" data-en="Why You Should Choose Hotel Salak The Heritage" data-id="Mengapa Memilih Hotel Salak The Heritage">
-                        Why You Should Choose Hotel Salak The Heritage
-                    </h4>
+                <!-- KOLOM 2: ABOUT US -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">About Us</h4>
+                    <ul class="footer-link-list">
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Background</a></li>
+                        <li><a href="#">Management</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Awards &amp; Certificates</a></li>
+                    </ul>
+                </div>
 
-                    <ul class="overview-list">
+                <!-- KOLOM 3: FOR BUSINESS -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">For Business</h4>
+                    <ul class="footer-link-list">
+                        <li><a href="#">Investment</a></li>
+                        <li><a href="#">News &amp; Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
 
-                        <li>
-                            <div class="overview-num">1</div>
-                            <div>
-                                <p class="overview-point-title" data-en="Prime Location" data-id="Lokasi Utama">Prime Location</p>
-                                <p class="overview-point-text" data-en="Situated in the prestigious area of Bogor City, right in front of the Bogor Presidential Palace and just steps away from the Botanical Garden entrance." data-id="Berada di kawasan bergengsi Kota Bogor, tepat di depan Istana Kepresidenan dan hanya beberapa langkah dari pintu masuk Kebun Raya Bogor.">
-                                    Situated in the prestigious area of Bogor City, right in front of the Bogor Presidential Palace and just steps away from the Botanical Garden entrance.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="overview-num">2</div>
-                            <div>
-                                <p class="overview-point-title" data-en="Flood-Free Haven" data-id="Bebas Banjir">Flood-Free Haven</p>
-                                <p class="overview-point-text" data-en="Hotel Salak The Heritage is located in a flood-free zone, ensuring a worry-free stay." data-id="Hotel Salak The Heritage berada di zona bebas banjir, memberikan ketenangan selama menginap.">
-                                    Hotel Salak The Heritage is located in a flood-free zone, ensuring a worry-free stay.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="overview-num">3</div>
-                            <div>
-                                <p class="overview-point-title" data-en="Versatile Meeting Spaces" data-id="Ruang Pertemuan Serbaguna">Versatile Meeting Spaces</p>
-                                <p class="overview-point-text" data-en="Suitable for hosting a small team meeting or a large international event." data-id="Cocok untuk rapat tim kecil maupun acara internasional berskala besar.">
-                                    Suitable for hosting a small team meeting or a large international event.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="overview-num">4</div>
-                            <div>
-                                <p class="overview-point-title" data-en="International Expertise" data-id="Keahlian Internasional">International Expertise</p>
-                                <p class="overview-point-text" data-en="With a wealth of experience, our professional staff will ensure your event runs smoothly and flawlessly." data-id="Didukung staf profesional berpengalaman yang memastikan acara Anda berjalan lancar dan sempurna.">
-                                    With a wealth of experience, our professional staff will ensure your event runs smoothly and flawlessly.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="overview-num">5</div>
-                            <div>
-                                <p class="overview-point-title" data-en="Ultra-Fast Wi-Fi" data-id="Wi-Fi Super Cepat">Ultra-Fast Wi-Fi</p>
-                                <p class="overview-point-text" data-en="Stay connected with our lightning-fast Wi-Fi." data-id="Tetap terhubung dengan koneksi Wi-Fi kami yang sangat cepat.">
-                                    Stay connected with our lightning-fast Wi-Fi.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="overview-num">6</div>
-                            <div>
-                                <p class="overview-point-title" data-en="Indulgent Coffee Breaks" data-id="Coffee Break Istimewa">Indulgent Coffee Breaks</p>
-                                <p class="overview-point-text" data-en="Enjoy a special treat with our delicious coffee break pastries, featuring the famous Triple Combo Klapertaart, a local delicacy." data-id="Nikmati camilan lezat saat coffee break, termasuk Triple Combo Klapertaart yang legendaris.">
-                                    Enjoy a special treat with our delicious coffee break pastries, featuring the famous Triple Combo Klapertaart, a local delicacy.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="overview-num">7</div>
-                            <div>
-                                <p class="overview-point-title" data-en="Multilingual Staff" data-id="Staf Multibahasa">Multilingual Staff</p>
-                                <p class="overview-point-text" data-en="Our friendly and professional staff, including English-speaking representatives, are dedicated to providing you with exceptional service." data-id="Tim kami yang ramah, termasuk staf berbahasa Inggris, siap memberikan pelayanan terbaik.">
-                                    Our friendly and professional staff, including English-speaking representatives, are dedicated to providing you with exceptional service.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="overview-num">8</div>
-                            <div>
-                                <p class="overview-point-title" data-en="Romantic Ambiance" data-id="Suasana Romantis">Romantic Ambiance</p>
-                                <p class="overview-point-text" data-en="Escape to a world of romance with our charming and elegant ambiance, perfect for a relaxing getaway or a special occasion." data-id="Rasakan suasana elegan dan romantis, sempurna untuk liburan santai maupun momen spesial.">
-                                    Escape to a world of romance with our charming and elegant ambiance, perfect for a relaxing getaway or a special occasion.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="overview-num">9</div>
-                            <div>
-                                <p class="overview-point-title" data-en="Clean and Healthy Environment" data-id="Lingkungan Bersih &amp; Sehat">Clean and Healthy Environment</p>
-                                <p class="overview-point-text" data-en="Enjoy a clean and healthy environment with our cutting-edge Negative Ion technology, which effectively kills viruses and germs in the air, ensuring your well-being." data-id="Nikmati udara bersih berkat teknologi Negative Ion yang efektif membunuh virus dan kuman di udara.">
-                                    Enjoy a clean and healthy environment with our cutting-edge Negative Ion technology, which effectively kills viruses and germs in the air, ensuring your well-being.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="overview-num">10</div>
-                            <div>
-                                <p class="overview-point-title" data-en="Convenient Shuttle Service" data-id="Layanan Shuttle Gratis">Convenient Shuttle Service</p>
-                                <p class="overview-point-text" data-en="Get around easily with our complimentary shuttle service to and from Bogor Train Station and Damri Bus Terminal in Bogor." data-id="Kemudahan akses dengan layanan shuttle gratis dari dan ke Stasiun Kereta Bogor serta Terminal Bus Damri.">
-                                    Get around easily with our complimentary shuttle service to and from Bogor Train Station and Damri Bus Terminal in Bogor.
-                                </p>
-                            </div>
-                        </li>
-
+                <!-- KOLOM 4: AFFILIATES -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Affiliates</h4>
+                    <ul class="footer-link-list">
+                        <li><a href="#">Tuquh.com</a></li>
                     </ul>
                 </div>
 
             </div>
-        </div>
-    </section>
 
-    </section>
-
-    <!-- ROOMS & SUITES (baru) -->
-    <section class="rooms-section" id="roomsSection">
-        <div class="rooms-container">
-
-            <div class="rooms-header">
-                <div class="rooms-heading">Rooms &amp; Suites</div>
-                <a href="rooms.html" class="rooms-viewall">
-                    View All Rooms <i class="fa-solid fa-arrow-right"></i>
-                </a>
+            <div class="footer-copyright">
+                Copyright © 2026 IT Hotel Salak The Heritage
             </div>
+        </footer>
 
-            <div class="rooms-grid">
-
-                <!-- ROOM 1 -->
-                <div class="flip-room-card">
-                    <div class="flip-room-inner">
-
-                        <!-- FRONT -->
-                        <div class="flip-room-front">
-                            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=1200&auto=format&fit=crop" alt="Superior Room">
-                            <div class="book-tag">BOOK</div>
-                            <div class="front-content">
-                                <h3 class="front-title">Superior Room</h3>
-                                <button class="flip-btn">DETAILS</button>
-                            </div>
-                        </div>
-
-                        <!-- BACK -->
-                        <div class="flip-room-back">
-                            <h3 class="back-title">Superior Room</h3>
-                            <p class="back-desc">Kamar elegan bergaya modern dengan kenyamanan premium dan suasana yang menenangkan.</p>
-                            <div class="back-info">
-                                <div><i class="fa-solid fa-user-group"></i> 1-2 Orang</div>
-                                <div><i class="fa-solid fa-wifi"></i> Free Wifi</div>
-                                <div><i class="fa-solid fa-bed"></i> King Bed</div>
-                                <div><i class="fa-solid fa-mug-saucer"></i> Breakfast</div>
-                            </div>
-                            <button class="close-btn"><i class="fa-solid fa-xmark"></i> CLOSE</button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- ROOM 2 -->
-                <div class="flip-room-card">
-                    <div class="flip-room-inner">
-
-                        <!-- FRONT -->
-                        <div class="flip-room-front">
-                            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop" alt="Salak View Room">
-                            <div class="book-tag">BOOK</div>
-                            <div class="front-content">
-                                <h3 class="front-title">Salak View Room</h3>
-                                <button class="flip-btn">DETAILS</button>
-                            </div>
-                        </div>
-
-                        <!-- BACK -->
-                        <div class="flip-room-back">
-                            <h3 class="back-title">Salak View Room</h3>
-                            <p class="back-desc">Kamar luas dengan pemandangan langsung ke arah Gunung Salak, desain elegan dan fasilitas premium.</p>
-                            <div class="back-info">
-                                <div><i class="fa-solid fa-user-group"></i> 2 Orang</div>
-                                <div><i class="fa-solid fa-wifi"></i> Premium Wifi</div>
-                                <div><i class="fa-solid fa-tv"></i> Smart TV</div>
-                                <div><i class="fa-solid fa-mug-saucer"></i> Breakfast</div>
-                            </div>
-                            <button class="close-btn"><i class="fa-solid fa-xmark"></i> CLOSE</button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- ROOM 3 -->
-                <div class="flip-room-card">
-                    <div class="flip-room-inner">
-
-                        <!-- FRONT -->
-                        <div class="flip-room-front">
-                            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200&auto=format&fit=crop" alt="Colonial Executive Heritage">
-                            <div class="book-tag">BOOK</div>
-                            <div class="front-content">
-                                <h3 class="front-title">Colonial Executive Heritage</h3>
-                                <button class="flip-btn">DETAILS</button>
-                            </div>
-                        </div>
-
-                        <!-- BACK -->
-                        <div class="flip-room-back">
-                            <h3 class="back-title">Colonial Executive Heritage</h3>
-                            <p class="back-desc">Suite bergaya kolonial dengan sentuhan mewah, cocok untuk pengalaman menginap yang berkesan dan penuh sejarah.</p>
-                            <div class="back-info">
-                                <div><i class="fa-solid fa-user-group"></i> 2-3 Orang</div>
-                                <div><i class="fa-solid fa-wifi"></i> Free Wifi</div>
-                                <div><i class="fa-solid fa-mug-saucer"></i> Coffee Set</div>
-                                <div><i class="fa-solid fa-bath"></i> Bathtub</div>
-                            </div>
-                            <button class="close-btn"><i class="fa-solid fa-xmark"></i> CLOSE</button>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS (baru) -->
-    <section class="testimonial-section" id="testimonialSection">
-        <div class="testimonial-container">
-
-            <div class="testimonial-header">
-                <div class="testimonial-eyebrow">Ulasan Tamu</div>
-                <h2 class="testimonial-title">What Customer Say</h2>
-            </div>
-
-            <div class="testimonial-grid">
-
-                <!-- TESTIMONI 1 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-quote-mark"><i class="fa-solid fa-quote-right"></i></div>
-                    <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
-                    <div class="testimonial-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Pelayanan sangat ramah dan kamar sangat nyaman. Lokasinya strategis, dekat dengan Kebun Raya Bogor dan Istana. Pasti akan kembali lagi."
-                    </p>
-                    <div>
-                        <p class="testimonial-name">Mrs. Thalia</p>
-                        <p class="testimonial-role">Leisure Guest</p>
-                    </div>
-                </div>
-
-                <!-- TESTIMONI 2 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-quote-mark"><i class="fa-solid fa-quote-right"></i></div>
-                    <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
-                    <div class="testimonial-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Ruang meeting sangat representatif dan staf sangat membantu selama acara berlangsung. Sarapannya juga enak dan variatif."
-                    </p>
-                    <div>
-                        <p class="testimonial-name">Bpk. Andra</p>
-                        <p class="testimonial-role">Business Guest</p>
-                    </div>
-                </div>
-
-                <!-- TESTIMONI 3 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-quote-mark"><i class="fa-solid fa-quote-right"></i></div>
-                    <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
-                    <div class="testimonial-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Suasana hotel yang bersejarah tapi tetap modern. Kolam renang dan spa-nya juga menyegarkan setelah acara pernikahan kami."
-                    </p>
-                    <div>
-                        <p class="testimonial-name">Mrs. Sarah</p>
-                        <p class="testimonial-role">Wedding Guest</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER (baru) -->
-
-    <!-- FOOTER TOP: SOSIAL + NEWSLETTER -->
-    <div class="site-footer-top" id="footerTop">
-        <div class="footer-social-row">
-            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
-        </div>
-
-        <div class="footer-newsletter">
-            <span class="footer-newsletter-label">Sign up to receive Special Offers:</span>
-            <form class="footer-newsletter-form" onsubmit="return false;">
-                <input type="email" placeholder="Enter your e-mail address" required>
-                <button type="submit" class="footer-subscribe-btn">SUBSCRIBE</button>
-            </form>
-        </div>
     </div>
-
-    <!-- FOOTER MAIN: 4 KOLOM -->
-    <footer class="site-footer-main" id="footerMain">
-        <div class="footer-main-grid">
-
-            <!-- KOLOM 1: HOTEL INFO -->
-            <div class="footer-col">
-                <h4 class="footer-col-title">Hotel Salak The Heritage</h4>
-                <ul class="footer-address-list">
-                    <li><i class="fa-solid fa-location-dot"></i> Jl. Ir. H. Juanda No.8, 16121 Bogor - Indonesia</li>
-                    <li><i class="fa-solid fa-phone"></i> Call Us: Telp. +62 251 8373 111</li>
-                    <li><i class="fa-solid fa-fax"></i> Fax: +62 251 8374 111</li>
-                    <li><i class="fa-brands fa-whatsapp"></i> WA Hotel Information: +62 812 8701 3896</li>
-                    <li><i class="fa-solid fa-envelope"></i> <a href="mailto:marketing@hotelsalak.co.id">marketing@hotelsalak.co.id</a></li>
-                </ul>
-            </div>
-
-            <!-- KOLOM 2: ABOUT US -->
-            <div class="footer-col">
-                <h4 class="footer-col-title">About Us</h4>
-                <ul class="footer-link-list">
-                    <li><a href="#">History</a></li>
-                    <li><a href="#">Background</a></li>
-                    <li><a href="#">Management</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Awards &amp; Certificates</a></li>
-                </ul>
-            </div>
-
-            <!-- KOLOM 3: FOR BUSINESS -->
-            <div class="footer-col">
-                <h4 class="footer-col-title">For Business</h4>
-                <ul class="footer-link-list">
-                    <li><a href="#">Investment</a></li>
-                    <li><a href="#">News &amp; Press</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- KOLOM 4: AFFILIATES -->
-            <div class="footer-col">
-                <h4 class="footer-col-title">Affiliates</h4>
-                <ul class="footer-link-list">
-                    <li><a href="#">Tuquh.com</a></li>
-                </ul>
-            </div>
-
-        </div>
-
-        <div class="footer-copyright">
-            Copyright © 2026 IT Hotel Salak The Heritage
-        </div>
-    </footer>
+    <!-- /page-wrapper -->
 
     <!-- FLOATING WHATSAPP BUTTON (baru) -->
-    <!-- Ganti nomor di href (format: 62xxxxxxxxxxx, tanpa tanda + atau 0 di depan) sebelum go-live -->
-    <a href="https://wa.me/" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Hubungi kami via WhatsApp">
+    <!-- PENTING sebelum go-live: ganti nomor di href (format: 62xxxxxxxxxxx, tanpa tanda + atau 0 di depan) -->
+    <a href="https://wa.me/6281287013896" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Hubungi kami via WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -2410,8 +2418,8 @@
 
     <script>
         /* =========================================
-                                                                                                                                                                                                                   NAVBAR DROPDOWN (baru)
-                                                                                                                                                                                                                ========================================= */
+                   NAVBAR DROPDOWN
+                ========================================= */
 
         function toggleMenu(element) {
 
@@ -2488,7 +2496,9 @@
         });
 
         /* =========================================
-           NAVBAR SCROLL BEHAVIOR
+           NAVBAR SCROLL BEHAVIOR (satu handler, di-throttle
+           dengan requestAnimationFrame — versi duplikat yang
+           tidak di-throttle sudah dihapus)
            - Tersembunyi total selama masih di dalam hero
            - Muncul begitu hero terlewati
            - Sembunyi saat scroll turun, muncul saat scroll naik (setelah lewat hero)
@@ -2498,9 +2508,9 @@
         const heroSection = document.querySelector('.hero');
 
         let lastScrollTop = 0;
+        let ticking = false;
 
-        window.addEventListener('scroll', function() {
-
+        function updateNavbarOnScroll() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             let heroHeight = heroSection.offsetHeight;
 
@@ -2525,7 +2535,18 @@
             }
 
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }
 
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    updateNavbarOnScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, {
+            passive: true
         });
 
         /* =========================================
@@ -2671,7 +2692,7 @@
 
         const langToggle = document.getElementById('langToggle');
 
-        if (langToggle) {
+        if (langToggle && overviewSection) {
             const langButtons = langToggle.querySelectorAll('button[data-lang]');
             const translatableEls = overviewSection.querySelectorAll('[data-en][data-id]');
 
@@ -2697,7 +2718,7 @@
         }
 
         /* =========================================
-           ROOMS & SUITES — SCROLL REVEAL (baru)
+           ROOMS & SUITES — SCROLL REVEAL + FLIP CARD (baru)
         ========================================= */
 
         const roomsSection = document.getElementById('roomsSection');
@@ -2729,10 +2750,6 @@
             });
 
             roomCards.forEach(card => roomCardObserver.observe(card));
-
-            /* =========================================
-               ROOMS & SUITES — FLIP CARD DETAILS/CLOSE (baru)
-            ========================================= */
 
             roomCards.forEach(function(card) {
                 const openBtn = card.querySelector('.flip-btn');
