@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- FIX: MOBILE HORIZONTAL OVERFLOW (baru) -->
+    <!-- FIX: MOBILE HORIZONTAL OVERFLOW (garis di pinggir kanan) -->
     <style>
         html,
         body {
@@ -49,7 +49,7 @@
         }
     </style>
 
-    <!-- NAVBAR DROPDOWN + RESPONSIVE (baru) -->
+    <!-- NAVBAR DROPDOWN + RESPONSIVE -->
     <style>
          :root {
             --logo-h: 52px;
@@ -74,15 +74,20 @@
             border-bottom: 2px solid transparent;
             border-image: linear-gradient(90deg, #c9a35a, #e8cf9c, #c9a35a) 1;
             /* NAVBAR DISEMBUNYIKAN SELAMA MASIH DI HERO */
-            transform: translateY(-100%);
+            transform: translate3d(0, -100%, 0);
             opacity: 0;
             pointer-events: none;
+            /* FIX SCROLL PATAH-PATAH: paksa navbar punya compositing layer sendiri
+               (GPU), supaya browser tidak perlu repaint elemen lain tiap frame */
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
             transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
         }
         /* Muncul setelah user scroll melewati hero */
         
         .navbar.navbar-visible {
-            transform: translateY(0);
+            transform: translate3d(0, 0, 0);
             opacity: 1;
             pointer-events: auto;
         }
@@ -94,7 +99,7 @@
         /* Sembunyi lagi kalau scroll ke bawah (setelah muncul) */
         
         .navbar.navbar-hidden {
-            transform: translateY(-100%);
+            transform: translate3d(0, -100%, 0);
             opacity: 0;
             pointer-events: none;
         }
@@ -307,7 +312,11 @@
             .navbar-toggle {
                 display: flex;
             }
-            /* Menu jadi panel geser dari kanan */
+            /* Menu jadi panel geser dari kanan.
+               PENTING: elemen ini SEKARANG bukan lagi anak dari <nav> (lihat HTML di bawah),
+               jadi transform "geser" panel ini TIDAK ikut kena repaint tiap kali
+               .navbar berubah transform saat discroll -> ini penyebab utama patah-patah
+               sebelumnya sudah dihilangkan. */
             .nav-menu {
                 position: fixed;
                 top: 0;
@@ -322,12 +331,15 @@
                 -webkit-overflow-scrolling: touch;
                 padding: calc(var(--navbar-h) + 10px) 0 30px;
                 box-shadow: -8px 0 24px rgba(0, 0, 0, 0.18);
-                transform: translateX(100%);
+                transform: translate3d(100%, 0, 0);
+                will-change: transform;
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
                 transition: transform 0.4s ease;
                 z-index: 1150;
             }
             .nav-menu.open {
-                transform: translateX(0);
+                transform: translate3d(0, 0, 0);
             }
             .nav-item {
                 width: 100%;
@@ -379,7 +391,7 @@
         }
     </style>
 
-    <!-- SPECIAL OFFERS SECTION (baru) -->
+    <!-- SPECIAL OFFERS SECTION -->
     <style>
          :root {
             --offers-gold: #c9a35a;
@@ -649,7 +661,7 @@
         }
     </style>
 
-    <!-- HOTEL OVERVIEW SECTION (baru) -->
+    <!-- HOTEL OVERVIEW SECTION -->
     <style>
         .overview-section {
             padding: 90px 24px 100px;
@@ -908,7 +920,7 @@
         }
     </style>
 
-    <!-- ROOMS & SUITES SECTION (baru — flip card style) -->
+    <!-- ROOMS & SUITES SECTION (flip card style) -->
     <style>
         .rooms-section {
             padding: 20px 24px 100px;
@@ -1210,8 +1222,8 @@
                 padding: 30px 24px;
             }
         }
-        /* PERBAIKAN PERFORMA SCROLL (baru): backdrop-filter blur berat untuk
-           GPU HP, apalagi kalau elemen ini ikut ter-render ulang tiap scroll.
+        /* PERBAIKAN PERFORMA SCROLL: backdrop-filter blur berat untuk GPU HP,
+           apalagi kalau elemen ini ikut ter-render ulang tiap scroll.
            Di HP diganti background solid transparan (tampilan tetap mirip),
            blur tetap dipakai di desktop. */
         
@@ -1236,7 +1248,7 @@
         }
     </style>
 
-    <!-- TESTIMONIALS SECTION (baru) -->
+    <!-- TESTIMONIALS SECTION -->
     <style>
         .testimonial-section {
             padding: 20px 24px 100px;
@@ -1418,7 +1430,7 @@
         }
     </style>
 
-    <!-- FLOATING WHATSAPP BUTTON (baru) -->
+    <!-- FLOATING WHATSAPP BUTTON -->
     <style>
         .floating-whatsapp {
             position: fixed;
@@ -1484,7 +1496,7 @@
         }
     </style>
 
-    <!-- FOOTER SECTION (baru) -->
+    <!-- FOOTER SECTION -->
     <style>
         /* ===== TOP: SOSIAL + NEWSLETTER ===== */
         
@@ -1752,7 +1764,9 @@
         <div class="hero-slide"></div>
         <div class="hero-slide"></div>
 
-        <!-- NAVBAR (baru, dengan dropdown + responsive) -->
+        <!-- NAVBAR (hanya brand + hamburger. Menu & overlay DIPISAH di bawah,
+             supaya tidak nested di dalam elemen yang ber-transform -> ini
+             perbaikan utama untuk hilangkan patah-patah saat discroll) -->
         <nav class="navbar">
 
             <a class="navbar-brand" href="#">
@@ -1766,101 +1780,108 @@
                 <span></span>
             </button>
 
-            <div class="nav-menu" id="navMenu">
+        </nav>
 
-                <!-- ABOUT US -->
-                <div class="nav-item">
-                    <a class="nav-link" onclick="toggleMenu(this)">
-                        ABOUT US <span class="arrow">▾</span>
-                    </a>
-                    <div class="dropdown">
-                        <a href="mentahan.html">Hotel Profile</a>
-                        <a href="tesss.html">History</a>
-                        <a href="#">Hotel Facilities</a>
-                        <a href="#">Contact Us</a>
-                    </div>
+        <!-- MENU (dipisah dari <nav>, JADI SIBLING bukan anak dari .navbar.
+             Sebelumnya menu ini nested di dalam <nav class="navbar">, dan karena
+             .navbar punya CSS transform yang berubah tiap kali discroll (show/hide),
+             browser jadi harus reposisi ulang panel menu setinggi 100vh ini di
+             SETIAP frame perubahan transform navbar -> itulah penyebab navbar
+             "patah-patah"/berhenti-henti saat discroll. Setelah dipisah, transform
+             navbar tidak lagi menyeret elemen besar ini, jadi scroll jadi mulus. -->
+        <div class="nav-menu" id="navMenu">
+
+            <!-- ABOUT US -->
+            <div class="nav-item">
+                <a class="nav-link" onclick="toggleMenu(this)">
+                    ABOUT US <span class="arrow">▾</span>
+                </a>
+                <div class="dropdown">
+                    <a href="mentahan.html">Hotel Profile</a>
+                    <a href="tesss.html">History</a>
+                    <a href="#">Hotel Facilities</a>
+                    <a href="#">Contact Us</a>
                 </div>
-
-                <!-- ROOMS -->
-                <div class="nav-item">
-                    <a class="nav-link" onclick="toggleMenu(this)">
-                        ROOMS & SUITES <span class="arrow">▾</span>
-                    </a>
-                    <div class="dropdown">
-                        <a href="rooms.html">Deluxe Room</a>
-                        <a href="rooms.html">Executive Room</a>
-                        <a href="rooms.html">Suite Room</a>
-                    </div>
-                </div>
-
-                <!-- DINING -->
-                <div class="nav-item">
-                    <a class="nav-link" onclick="toggleMenu(this)">
-                        DINING <span class="arrow">▾</span>
-                    </a>
-                    <div class="dropdown">
-                        <a href="#">Restaurant</a>
-                        <a href="#">Cafe</a>
-                        <a href="#">Room Service</a>
-                    </div>
-                </div>
-
-                <!-- MEETING -->
-                <div class="nav-item">
-                    <a class="nav-link" onclick="toggleMenu(this)">
-                        MEETINGS & EVENTS <span class="arrow">▾</span>
-                    </a>
-                    <div class="dropdown">
-                        <a href="meting.html">Meeting Room</a>
-                        <a href="#">Special Meeting Offers</a>
-                        <a href="#">Events</a>
-                    </div>
-                </div>
-
-                <!-- WEDDINGS -->
-                <div class="nav-item">
-                    <a class="nav-link" onclick="toggleMenu(this)">
-                        WEDDINGS <span class="arrow">▾</span>
-                    </a>
-                    <div class="dropdown">
-                        <a href="wedding.html">Wedding Package</a>
-                        <a href="wedding.html">Wedding Venue</a>
-                        <a href="wedding.html">Wedding Offers</a>
-                    </div>
-                </div>
-
-                <!-- OFFERS -->
-                <div class="nav-item">
-                    <a class="nav-link" onclick="toggleMenu(this)">
-                        OFFERS <span class="arrow">▾</span>
-                    </a>
-                    <div class="dropdown">
-                        <a href="promosi.html">Special Offers</a>
-                        <a href="promosi.html">Weekend Package</a>
-                        <a href="promosi.html">Member Offers</a>
-                    </div>
-                </div>
-
-                <!-- MORE -->
-                <div class="nav-item">
-                    <a class="nav-link" onclick="toggleMenu(this)">
-                        MORE <span class="arrow">▾</span>
-                    </a>
-                    <div class="dropdown">
-                        <a href="#">Reward Points</a>
-                        <a href="#">Salak Privilege Card</a>
-                        <a href="galeri.html">Blog</a>
-                        <a href="#">Catering</a>
-                        <a href="#">Reservation Chat</a>
-                        <a href="#">Newsletters</a>
-                        <a href="#">Apps</a>
-                        <a href="#">Sign In</a>
-                    </div>
-                </div>
-
             </div>
 
-        </nav>
+            <!-- ROOMS -->
+            <div class="nav-item">
+                <a class="nav-link" onclick="toggleMenu(this)">
+                    ROOMS & SUITES <span class="arrow">▾</span>
+                </a>
+                <div class="dropdown">
+                    <a href="rooms.html">Deluxe Room</a>
+                    <a href="rooms.html">Executive Room</a>
+                    <a href="rooms.html">Suite Room</a>
+                </div>
+            </div>
+
+            <!-- DINING -->
+            <div class="nav-item">
+                <a class="nav-link" onclick="toggleMenu(this)">
+                    DINING <span class="arrow">▾</span>
+                </a>
+                <div class="dropdown">
+                    <a href="#">Restaurant</a>
+                    <a href="#">Cafe</a>
+                    <a href="#">Room Service</a>
+                </div>
+            </div>
+
+            <!-- MEETING -->
+            <div class="nav-item">
+                <a class="nav-link" onclick="toggleMenu(this)">
+                    MEETINGS & EVENTS <span class="arrow">▾</span>
+                </a>
+                <div class="dropdown">
+                    <a href="meting.html">Meeting Room</a>
+                    <a href="#">Special Meeting Offers</a>
+                    <a href="#">Events</a>
+                </div>
+            </div>
+
+            <!-- WEDDINGS -->
+            <div class="nav-item">
+                <a class="nav-link" onclick="toggleMenu(this)">
+                    WEDDINGS <span class="arrow">▾</span>
+                </a>
+                <div class="dropdown">
+                    <a href="wedding.html">Wedding Package</a>
+                    <a href="wedding.html">Wedding Venue</a>
+                    <a href="wedding.html">Wedding Offers</a>
+                </div>
+            </div>
+
+            <!-- OFFERS -->
+            <div class="nav-item">
+                <a class="nav-link" onclick="toggleMenu(this)">
+                    OFFERS <span class="arrow">▾</span>
+                </a>
+                <div class="dropdown">
+                    <a href="promosi.html">Special Offers</a>
+                    <a href="promosi.html">Weekend Package</a>
+                    <a href="promosi.html">Member Offers</a>
+                </div>
+            </div>
+
+            <!-- MORE -->
+            <div class="nav-item">
+                <a class="nav-link" onclick="toggleMenu(this)">
+                    MORE <span class="arrow">▾</span>
+                </a>
+                <div class="dropdown">
+                    <a href="#">Reward Points</a>
+                    <a href="#">Salak Privilege Card</a>
+                    <a href="galeri.html">Blog</a>
+                    <a href="#">Catering</a>
+                    <a href="#">Reservation Chat</a>
+                    <a href="#">Newsletters</a>
+                    <a href="#">Apps</a>
+                    <a href="#">Sign In</a>
+                </div>
+            </div>
+
+        </div>
 
         <!-- OVERLAY (mobile/tablet) -->
         <div class="nav-overlay" id="navOverlay"></div>
@@ -1952,7 +1973,7 @@
         </div>
     </section>
 
-    <!-- SPECIAL OFFERS (baru) -->
+    <!-- SPECIAL OFFERS -->
     <section class="offers-section" id="offersSection">
         <div class="offers-container">
 
@@ -2022,7 +2043,7 @@
         </div>
     </section>
 
-    <!-- HOTEL OVERVIEW (baru) -->
+    <!-- HOTEL OVERVIEW -->
     <section class="overview-section" id="overviewSection">
         <div class="overview-container">
 
@@ -2178,9 +2199,7 @@
         </div>
     </section>
 
-    </section>
-
-    <!-- ROOMS & SUITES (baru) -->
+    <!-- ROOMS & SUITES -->
     <section class="rooms-section" id="roomsSection">
         <div class="rooms-container">
 
@@ -2287,7 +2306,7 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS (baru) -->
+    <!-- TESTIMONIALS -->
     <section class="testimonial-section" id="testimonialSection">
         <div class="testimonial-container">
 
@@ -2362,7 +2381,7 @@
         </div>
     </section>
 
-    <!-- FOOTER (baru) -->
+    <!-- FOOTER -->
 
     <!-- FOOTER TOP: SOSIAL + NEWSLETTER -->
     <div class="site-footer-top" id="footerTop">
@@ -2435,7 +2454,7 @@
         </div>
     </footer>
 
-    <!-- FLOATING WHATSAPP BUTTON (baru) -->
+    <!-- FLOATING WHATSAPP BUTTON -->
     <!-- Ganti nomor di href (format: 62xxxxxxxxxxx, tanpa tanda + atau 0 di depan) sebelum go-live -->
     <a href="https://wa.me/" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Hubungi kami via WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
@@ -2445,8 +2464,8 @@
 
     <script>
         /* =========================================
-                                                                                                                                                                   NAVBAR DROPDOWN (baru)
-                                                                                                                                                                ========================================= */
+                   NAVBAR DROPDOWN
+                ========================================= */
 
         function toggleMenu(element) {
 
@@ -2522,58 +2541,65 @@
             }
         });
 
-        // PERBAIKAN PERFORMA SCROLL (baru): heroHeight di-cache di atas,
-        // jadi perlu di-refresh manual saat layar di-resize (misal rotasi HP)
-        window.addEventListener('resize', function() {
-            heroHeight = heroSection.offsetHeight;
-        });
-
         /* =========================================
            NAVBAR SCROLL BEHAVIOR
            - Tersembunyi total selama masih di dalam hero
            - Muncul begitu hero terlewati
            - Sembunyi saat scroll turun, muncul saat scroll naik (setelah lewat hero)
+
+           PERBAIKAN PERFORMA SCROLL (final):
+           - heroHeight di-cache sekali (TIDAK dibaca ulang tiap scroll,
+             karena baca offsetHeight tiap scroll = "layout thrashing",
+             salah satu penyebab patah-patah)
+           - Update navbar dibungkus requestAnimationFrame supaya nyambung
+             dengan ritme render browser
+           - Listener scroll dipasang { passive: true } supaya browser tidak
+             menunggu JS selesai sebelum lanjut scroll
+           - classList HANYA ditulis kalau status navbar benar-benar berubah
+             (dilacak lewat variabel navState), bukan tiap frame -> mengurangi
+             kerja style-recalculation yang tidak perlu
+           - #navMenu sudah dipindah keluar dari <nav> di HTML, jadi transform
+             navbar di atas TIDAK lagi ikut menyeret panel menu 100vh -> ini
+             perbaikan utama yang menghilangkan "leg-leg" saat discroll
         ========================================= */
 
         const navbar = document.querySelector('.navbar');
         const heroSection = document.querySelector('.hero');
 
         let lastScrollTop = 0;
-
-        /* PERBAIKAN PERFORMA SCROLL (baru):
-           - heroHeight di-cache sekali, TIDAK dibaca ulang tiap scroll
-             (baca offsetHeight tiap scroll = "layout thrashing", penyebab utama patah-patah)
-           - Update navbar dibungkus requestAnimationFrame supaya nyambung
-             dengan ritme render browser, bukan ditembak berkali-kali per scroll tick
-           - Listener scroll dipasang { passive: true } supaya browser tidak
-             menunggu JS selesai sebelum lanjut scroll -> scroll jadi mulus
-           Perilaku navbar (hide di hero, muncul setelah lewat hero, sembunyi
-           saat scroll turun, muncul saat scroll naik) TETAP SAMA PERSIS. */
-
         let heroHeight = heroSection.offsetHeight;
         let scrollTicking = false;
+        let navState = 'hero'; // 'hero' | 'shown' | 'hidden'
+
+        window.addEventListener('resize', function() {
+            heroHeight = heroSection.offsetHeight;
+        });
 
         function updateNavbarOnScroll() {
 
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
             if (scrollTop < heroHeight) {
                 // masih di dalam hero -> navbar full hidden
-                navbar.classList.remove('navbar-visible');
-                navbar.classList.remove('navbar-scrolled');
-                navbar.classList.remove('navbar-hidden');
+                if (navState !== 'hero') {
+                    navbar.classList.remove('navbar-visible', 'navbar-scrolled', 'navbar-hidden');
+                    navState = 'hero';
+                }
             } else {
-                // sudah lewat hero -> navbar boleh muncul
-                navbar.classList.add('navbar-visible');
-                navbar.classList.add('navbar-scrolled');
-
                 if (scrollTop > lastScrollTop) {
                     // scroll ke bawah -> sembunyikan navbar
-                    navbar.classList.add('navbar-hidden');
-                    closeMobileMenu();
+                    if (navState !== 'hidden') {
+                        navbar.classList.add('navbar-visible', 'navbar-scrolled', 'navbar-hidden');
+                        navState = 'hidden';
+                        closeMobileMenu();
+                    }
                 } else {
                     // scroll ke atas -> tampilkan lagi
-                    navbar.classList.remove('navbar-hidden');
+                    if (navState !== 'shown') {
+                        navbar.classList.add('navbar-visible', 'navbar-scrolled');
+                        navbar.classList.remove('navbar-hidden');
+                        navState = 'shown';
+                    }
                 }
             }
 
@@ -2670,7 +2696,7 @@
         setInterval(changeHero, 7000);
 
         /* =========================================
-           SPECIAL OFFERS — SCROLL REVEAL (baru)
+           SPECIAL OFFERS — SCROLL REVEAL
         ========================================= */
 
         const offersSection = document.getElementById('offersSection');
@@ -2705,7 +2731,7 @@
         }
 
         /* =========================================
-           HOTEL OVERVIEW — SCROLL REVEAL (baru)
+           HOTEL OVERVIEW — SCROLL REVEAL
         ========================================= */
 
         const overviewSection = document.getElementById('overviewSection');
@@ -2726,7 +2752,7 @@
         }
 
         /* =========================================
-           HOTEL OVERVIEW — TOMBOL TRANSLATE EN / ID (baru)
+           HOTEL OVERVIEW — TOMBOL TRANSLATE EN / ID
            Semua teks yang ingin diterjemahkan cukup diberi
            atribut data-en="..." dan data-id="..." di HTML.
         ========================================= */
@@ -2759,7 +2785,7 @@
         }
 
         /* =========================================
-           ROOMS & SUITES — SCROLL REVEAL (baru)
+           ROOMS & SUITES — SCROLL REVEAL
         ========================================= */
 
         const roomsSection = document.getElementById('roomsSection');
@@ -2793,7 +2819,7 @@
             roomCards.forEach(card => roomCardObserver.observe(card));
 
             /* =========================================
-               ROOMS & SUITES — FLIP CARD DETAILS/CLOSE (baru)
+               ROOMS & SUITES — FLIP CARD DETAILS/CLOSE
             ========================================= */
 
             roomCards.forEach(function(card) {
@@ -2818,7 +2844,7 @@
         }
 
         /* =========================================
-           TESTIMONIALS — SCROLL REVEAL (baru)
+           TESTIMONIALS — SCROLL REVEAL
         ========================================= */
 
         const testimonialSection = document.getElementById('testimonialSection');
@@ -2853,7 +2879,7 @@
         }
 
         /* =========================================
-           FOOTER — SCROLL REVEAL (baru)
+           FOOTER — SCROLL REVEAL
         ========================================= */
 
         const footerTop = document.getElementById('footerTop');
