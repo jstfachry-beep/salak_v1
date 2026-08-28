@@ -20,12 +20,6 @@
 
     <!-- NAVBAR DROPDOWN + RESPONSIVE (baru) -->
     <style>
-        html,
-        body {
-            overflow-x: hidden;
-            max-width: 100%;
-        }
-        
          :root {
             --logo-h: 52px;
             /* ganti angka ini saja untuk resize logo, semua elemen navbar ikut menyesuaikan */
@@ -156,6 +150,14 @@
         .arrow {
             font-size: calc(var(--logo-h) * 0.21);
             margin-left: 5px;
+        }
+        
+        @media (max-width: 575.98px) {
+            html,
+            body {
+                overflow-x: hidden;
+                max-width: 100%;
+            }
         }
         /* ===== HAMBURGER (mobile/tablet) ===== */
         
@@ -2408,8 +2410,8 @@
 
     <script>
         /* =========================================
-                                                                                                                                                                                           NAVBAR DROPDOWN (baru)
-                                                                                                                                                                                        ========================================= */
+                                                                                                                                                                                                                   NAVBAR DROPDOWN (baru)
+                                                                                                                                                                                                                ========================================= */
 
         function toggleMenu(element) {
 
