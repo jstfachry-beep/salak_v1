@@ -319,6 +319,7 @@
                 align-items: stretch;
                 justify-content: flex-start;
                 overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
                 padding: calc(var(--navbar-h) + 10px) 0 30px;
                 box-shadow: -8px 0 24px rgba(0, 0, 0, 0.18);
                 transform: translateX(100%);
@@ -1209,6 +1210,17 @@
                 padding: 30px 24px;
             }
         }
+        /* PERBAIKAN PERFORMA SCROLL (baru): backdrop-filter blur berat untuk
+           GPU HP, apalagi kalau elemen ini ikut ter-render ulang tiap scroll.
+           Di HP diganti background solid transparan (tampilan tetap mirip),
+           blur tetap dipakai di desktop. */
+        
+        @media (max-width: 767.98px) {
+            .book-tag {
+                backdrop-filter: none;
+                background: rgba(20, 15, 5, 0.45);
+            }
+        }
         
         @media (prefers-reduced-motion: reduce) {
             .rooms-header,
@@ -1953,7 +1965,7 @@
             <div class="offers-grid">
 
                 <a class="offer-card" href="promosi.html">
-                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1200&auto=format&fit=crop" alt="Work & Study Anywhere">
+                    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1200&auto=format&fit=crop" alt="Work & Study Anywhere">
                     <div class="offer-body">
                         <span class="offer-tag">Paket Kerja &amp; Belajar</span>
                         <h3 class="offer-title">Work &amp; Study Anywhere</h3>
@@ -1962,7 +1974,7 @@
                 </a>
 
                 <a class="offer-card" href="wedding.html">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" alt="Memorable Wedding Package">
+                    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" alt="Memorable Wedding Package">
                     <div class="offer-body">
                         <span class="offer-tag">Paket Pernikahan</span>
                         <h3 class="offer-title">Memorable Wedding Package</h3>
@@ -1971,7 +1983,7 @@
                 </a>
 
                 <a class="offer-card" href="meting.html">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Meetings, Coordination and Training">
+                    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Meetings, Coordination and Training">
                     <div class="offer-body">
                         <span class="offer-tag">Meeting &amp; Event</span>
                         <h3 class="offer-title">Meetings, Coordination &amp; Training</h3>
@@ -1980,7 +1992,7 @@
                 </a>
 
                 <a class="offer-card" href="wedding.html">
-                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&auto=format&fit=crop" alt="Plan Your Perfect Wedding">
+                    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&auto=format&fit=crop" alt="Plan Your Perfect Wedding">
                     <div class="offer-body">
                         <span class="offer-tag">Wedding Planning</span>
                         <h3 class="offer-title">Plan Your Perfect Wedding</h3>
@@ -1989,7 +2001,7 @@
                 </a>
 
                 <a class="offer-card" href="mentahan.html">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop" alt="Why Should You Choose Hotel Salak">
+                    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop" alt="Why Should You Choose Hotel Salak">
                     <div class="offer-body">
                         <span class="offer-tag">Hotel Profile</span>
                         <h3 class="offer-title">Why Should You Choose Us</h3>
@@ -1998,7 +2010,7 @@
                 </a>
 
                 <a class="offer-card" href="galeri.html">
-                    <img src="https://images.unsplash.com/photo-1580977276076-ae4b8c219b8e?q=80&w=1200&auto=format&fit=crop" alt="Explore Local Attractions in Bogor">
+                    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1580977276076-ae4b8c219b8e?q=80&w=1200&auto=format&fit=crop" alt="Explore Local Attractions in Bogor">
                     <div class="offer-body">
                         <span class="offer-tag">Jelajah Bogor</span>
                         <h3 class="offer-title">Explore Local Attractions in Bogor</h3>
@@ -2187,7 +2199,7 @@
 
                         <!-- FRONT -->
                         <div class="flip-room-front">
-                            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=1200&auto=format&fit=crop" alt="Superior Room">
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=1200&auto=format&fit=crop" alt="Superior Room">
                             <div class="book-tag">BOOK</div>
                             <div class="front-content">
                                 <h3 class="front-title">Superior Room</h3>
@@ -2217,7 +2229,7 @@
 
                         <!-- FRONT -->
                         <div class="flip-room-front">
-                            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop" alt="Salak View Room">
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop" alt="Salak View Room">
                             <div class="book-tag">BOOK</div>
                             <div class="front-content">
                                 <h3 class="front-title">Salak View Room</h3>
@@ -2247,7 +2259,7 @@
 
                         <!-- FRONT -->
                         <div class="flip-room-front">
-                            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200&auto=format&fit=crop" alt="Colonial Executive Heritage">
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200&auto=format&fit=crop" alt="Colonial Executive Heritage">
                             <div class="book-tag">BOOK</div>
                             <div class="front-content">
                                 <h3 class="front-title">Colonial Executive Heritage</h3>
@@ -2510,6 +2522,12 @@
             }
         });
 
+        // PERBAIKAN PERFORMA SCROLL (baru): heroHeight di-cache di atas,
+        // jadi perlu di-refresh manual saat layar di-resize (misal rotasi HP)
+        window.addEventListener('resize', function() {
+            heroHeight = heroSection.offsetHeight;
+        });
+
         /* =========================================
            NAVBAR SCROLL BEHAVIOR
            - Tersembunyi total selama masih di dalam hero
@@ -2522,10 +2540,22 @@
 
         let lastScrollTop = 0;
 
-        window.addEventListener('scroll', function() {
+        /* PERBAIKAN PERFORMA SCROLL (baru):
+           - heroHeight di-cache sekali, TIDAK dibaca ulang tiap scroll
+             (baca offsetHeight tiap scroll = "layout thrashing", penyebab utama patah-patah)
+           - Update navbar dibungkus requestAnimationFrame supaya nyambung
+             dengan ritme render browser, bukan ditembak berkali-kali per scroll tick
+           - Listener scroll dipasang { passive: true } supaya browser tidak
+             menunggu JS selesai sebelum lanjut scroll -> scroll jadi mulus
+           Perilaku navbar (hide di hero, muncul setelah lewat hero, sembunyi
+           saat scroll turun, muncul saat scroll naik) TETAP SAMA PERSIS. */
+
+        let heroHeight = heroSection.offsetHeight;
+        let scrollTicking = false;
+
+        function updateNavbarOnScroll() {
 
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            let heroHeight = heroSection.offsetHeight;
 
             if (scrollTop < heroHeight) {
                 // masih di dalam hero -> navbar full hidden
@@ -2548,7 +2578,16 @@
             }
 
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            scrollTicking = false;
+        }
 
+        window.addEventListener('scroll', function() {
+            if (!scrollTicking) {
+                window.requestAnimationFrame(updateNavbarOnScroll);
+                scrollTicking = true;
+            }
+        }, {
+            passive: true
         });
 
         /* =========================================
