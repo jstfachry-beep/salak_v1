@@ -64,31 +64,15 @@
         }
         
         .navbar.navbar-scrolled {
-            background: linear-gradient(180deg, #ffffff 0%, #fdfaf4 100%) !important;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            border-bottom: 2px solid transparent;
-            border-image: linear-gradient(90deg, #c9a35a, #e8cf9c, #c9a35a) 1;
+            background: linear-gradient(180deg, #ffffff 0%, #faf3e6 100%) !important;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
         }
-        /* Sembunyi lagi begitu balik ke area hero / scroll ke bawah (setelah muncul) */
+        /* Sembunyi lagi kalau scroll ke bawah (setelah muncul) */
         
         .navbar.navbar-hidden {
             transform: translateY(-100%);
             opacity: 0;
             pointer-events: none;
-        }
-        /* Navbar jadi lebih tipis begitu halaman discroll */
-        
-        .navbar.navbar-slim {
-            --navbar-h: calc(var(--logo-h) * 0.72 + 24px);
-        }
-        
-        .navbar.navbar-slim .brand-logo {
-            height: calc(var(--logo-h) * 0.72);
-        }
-        
-        .navbar.navbar-slim .nav-link {
-            padding-top: calc(var(--logo-h) * 0.72 * 0.42);
-            padding-bottom: calc(var(--logo-h) * 0.72 * 0.42);
         }
         
         .navbar-brand {
@@ -232,11 +216,6 @@
        ========================================================= */
         
         @media (max-width: 991.98px) {
-            /* garis/scroll horizontal tipis di HP saat menu mobile dibuka -> disembunyikan hanya di breakpoint ini */
-            html,
-            body {
-                overflow-x: hidden;
-            }
              :root {
                 --logo-h: 42px;
                 --navbar-h: calc(var(--logo-h) + 30px);
@@ -782,8 +761,8 @@
                         ABOUT US <span class="arrow">▾</span>
                     </a>
                     <div class="dropdown">
-                        <a href="mentahan.html">Hotel Profile</a>
-                        <a href="tesss.html">History</a>
+                        <a href="#">Hotel Profile</a>
+                        <a href="#">History</a>
                         <a href="#">Hotel Facilities</a>
                         <a href="#">Contact Us</a>
                     </div>
@@ -825,11 +804,16 @@
                     </div>
                 </div>
 
-                <!-- WEDDINGS: link langsung ke web eksternal (ganti href di bawah dengan URL aslinya) -->
+                <!-- WEDDINGS -->
                 <div class="nav-item">
-                    <a class="nav-link" href="https://www.hotelsalak.co.id/" target="_blank" rel="noopener">
-                        WEDDINGS
+                    <a class="nav-link" onclick="toggleMenu(this)">
+                        WEDDINGS <span class="arrow">▾</span>
                     </a>
+                    <div class="dropdown">
+                        <a href="wedding.html">Wedding Package</a>
+                        <a href="wedding.html">Wedding Venue</a>
+                        <a href="wedding.html">Wedding Offers</a>
+                    </div>
                 </div>
 
                 <!-- OFFERS -->
@@ -963,8 +947,8 @@
 
     <script>
         /* =========================================
-                                                   NAVBAR DROPDOWN
-                                                ========================================= */
+                           NAVBAR DROPDOWN
+                        ========================================= */
 
         function toggleMenu(element) {
 
@@ -1034,13 +1018,12 @@
 
         /* =========================================
            NAVBAR SCROLL BEHAVIOR
-           - Navbar SELALU tampil dari awal (tidak lagi disembunyikan di hero)
-           - Begitu discroll, navbar berubah jadi lebih tipis (navbar-slim)
-           - Balik ke atas, navbar kembali ke ukuran normal
         ========================================= */
 
         const navbar = document.querySelector('.navbar');
         const heroSection = document.querySelector('.rooms-hero');
+
+        let lastScrollTop = 0;
 
         window.addEventListener('scroll', function() {
 
@@ -1048,16 +1031,22 @@
             let heroHeight = heroSection.offsetHeight;
 
             if (scrollTop < heroHeight) {
-                // masih di dalam hero -> navbar full hidden
                 navbar.classList.remove('navbar-visible');
                 navbar.classList.remove('navbar-scrolled');
-                navbar.classList.remove('navbar-slim');
+                navbar.classList.remove('navbar-hidden');
             } else {
-                // sudah lewat hero -> navbar muncul & tetap terus ada (tidak hilang lagi saat scroll ke bawah)
                 navbar.classList.add('navbar-visible');
                 navbar.classList.add('navbar-scrolled');
-                navbar.classList.add('navbar-slim');
+
+                if (scrollTop > lastScrollTop) {
+                    navbar.classList.add('navbar-hidden');
+                    closeMobileMenu();
+                } else {
+                    navbar.classList.remove('navbar-hidden');
+                }
             }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 
         });
 

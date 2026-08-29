@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Section - Hotel Salak The Heritage Bogor</title>
+    <title>Sejarah - Hotel Salak The Heritage Bogor</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -22,6 +22,7 @@
         body {
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
+            background: #fffefb;
         }
         /* ======================================================
     NAVBAR (persis sama dengan navbar Hotel Salak)
@@ -232,7 +233,6 @@
        ========================================================= */
         
         @media (max-width: 991.98px) {
-            /* garis/scroll horizontal tipis di HP saat menu mobile dibuka -> disembunyikan hanya di breakpoint ini */
             html,
             body {
                 overflow-x: hidden;
@@ -247,7 +247,6 @@
             .navbar-toggle {
                 display: flex;
             }
-            /* Menu jadi panel geser dari kanan */
             .nav-menu {
                 position: fixed;
                 top: 0;
@@ -279,7 +278,6 @@
                 align-items: center;
                 justify-content: space-between;
             }
-            /* Submenu jadi accordion, bukan absolute */
             .dropdown {
                 position: static;
                 display: none;
@@ -296,7 +294,6 @@
                 font-size: 14px;
             }
         }
-        /* Tablet sedikit lebih lega dari mobile kecil */
         
         @media (min-width: 576px) and (max-width: 991.98px) {
              :root {
@@ -306,7 +303,6 @@
                 width: min(360px, 70vw);
             }
         }
-        /* HP kecil */
         
         @media (max-width: 400px) {
              :root {
@@ -325,6 +321,7 @@
             width: 100%;
             height: 62vh;
             background: url('1.jpg');
+            /* <-- ini yang diganti */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -360,7 +357,7 @@
             line-height: 1.1;
         }
         /* ======================================================
-    MOBILE
+    MOBILE / TABLET HERO
     ====================================================== */
         
         @media(max-width:768px) {
@@ -382,9 +379,6 @@
                 letter-spacing: 2px;
             }
         }
-        /* ======================================================
-    TABLET
-    ====================================================== */
         
         @media(min-width:769px) and (max-width:1024px) {
             .rooms-hero {
@@ -399,6 +393,426 @@
             .rooms-subtitle {
                 font-size: 12px;
                 letter-spacing: 5px;
+            }
+        }
+        /* ======================================================
+    SEJARAH - INTRO
+    ====================================================== */
+        
+        .section-eyebrow {
+            font-size: 13px;
+            letter-spacing: 6px;
+            color: #b8863f;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 40px;
+            font-weight: 500;
+            color: #262626;
+            margin-bottom: 26px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -14px;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 2px;
+            background: linear-gradient(90deg, #c9a35a, #e8cf9c, #c9a35a);
+        }
+        
+        @media(max-width:768px) {
+            .section-title {
+                font-size: 30px;
+            }
+        }
+        /* ======================================================
+    SEJARAH - OVERVIEW (GAMBAR KIRI + HIGHLIGHT KANAN)
+    ====================================================== */
+        
+        .history-overview {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 90px 24px 40px;
+            position: relative;
+        }
+        
+        .lang-toggle {
+            position: absolute;
+            top: 90px;
+            right: 24px;
+            display: flex;
+            border: 1px solid #ddd0b3;
+            border-radius: 20px;
+            overflow: hidden;
+            z-index: 5;
+        }
+        
+        .lang-btn {
+            border: none;
+            background: #ffffff;
+            color: #8a8478;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            padding: 7px 16px;
+            cursor: pointer;
+            transition: background .25s ease, color .25s ease;
+        }
+        
+        .lang-btn.active {
+            background: linear-gradient(135deg, #c9a35a, #b8863f);
+            color: #ffffff;
+        }
+        
+        .overview-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 46px;
+        }
+        
+        .overview-image img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            border-radius: 3px;
+            box-shadow: 0 20px 44px rgba(0, 0, 0, 0.16);
+        }
+        
+        .overview-highlights h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 500;
+            color: #262626;
+            padding-bottom: 20px;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #ece4d3;
+        }
+        
+        .highlight-item {
+            display: flex;
+            gap: 18px;
+            padding: 22px 0;
+            border-bottom: 1px solid #ece4d3;
+        }
+        
+        .highlight-item:last-child {
+            border-bottom: none;
+        }
+        
+        .highlight-num {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #b8863f;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 14px;
+            flex: 0 0 auto;
+        }
+        
+        .highlight-item h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #262626;
+            margin-bottom: 6px;
+        }
+        
+        .highlight-item p {
+            font-size: 13.5px;
+            line-height: 1.75;
+            color: #6b6b6b;
+        }
+        
+        .overview-bottom {
+            margin-top: 56px;
+        }
+        
+        .overview-bottom h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 30px;
+            font-weight: 500;
+            color: #262626;
+            margin-bottom: 20px;
+        }
+        
+        .overview-bottom p {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #555;
+            max-width: 900px;
+        }
+        
+        @media(max-width:991.98px) {
+            .overview-top {
+                grid-template-columns: 1fr;
+            }
+            .overview-image img {
+                height: 320px;
+            }
+        }
+        
+        @media(max-width:768px) {
+            .history-overview {
+                padding: 60px 20px 20px;
+            }
+            .lang-toggle {
+                position: static;
+                margin-bottom: 20px;
+                width: fit-content;
+            }
+        }
+        /* ======================================================
+    SEJARAH - DULU & KINI (FOTO BANGUNAN)
+    ====================================================== */
+        
+        .then-now-section {
+            max-width: 1180px;
+            margin: 10px auto 90px;
+            padding: 0 24px;
+        }
+        
+        .then-now-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .then-now-card {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .then-now-card img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            display: block;
+            filter: saturate(0.95);
+            transition: transform .6s ease;
+        }
+        
+        .then-now-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .then-now-label {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background: rgba(20, 18, 15, 0.55);
+            backdrop-filter: blur(3px);
+            color: #ffffff;
+            padding: 8px 18px;
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 1px solid rgba(201, 163, 90, 0.7);
+        }
+        
+        .then-now-caption {
+            background: #fdfaf4;
+            border: 1px solid #ecdfc2;
+            border-top: none;
+            padding: 18px 22px;
+        }
+        
+        .then-now-caption h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: #262626;
+            margin-bottom: 8px;
+        }
+        
+        .then-now-caption p {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #666;
+        }
+        
+        @media(max-width:767.98px) {
+            .then-now-grid {
+                grid-template-columns: 1fr;
+            }
+            .then-now-card img {
+                height: 260px;
+            }
+        }
+        /* ======================================================
+    SEJARAH - TIMELINE
+    ====================================================== */
+        
+        .timeline-section {
+            background: #fdfaf4;
+            padding: 90px 24px 100px;
+        }
+        
+        .timeline-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline {
+            position: relative;
+            margin-top: 60px;
+            padding-left: 46px;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: linear-gradient(180deg, #c9a35a, #e8cf9c 50%, #c9a35a);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 46px;
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+        
+        .timeline-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -46px;
+            top: 4px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fdfaf4;
+            border: 3px solid #b8863f;
+        }
+        
+        .timeline-year {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #b8863f;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        
+        .timeline-item h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 17px;
+            font-weight: 500;
+            color: #262626;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-item p {
+            font-size: 14px;
+            line-height: 1.85;
+            color: #5c5c5c;
+        }
+        
+        @media(prefers-reduced-motion: reduce) {
+            .timeline-item {
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+        /* ======================================================
+    SEJARAH - YAYASAN / QUOTE
+    ====================================================== */
+        
+        .heritage-quote {
+            max-width: 900px;
+            margin: 90px auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+        
+        .heritage-quote i.quote-icon {
+            font-size: 26px;
+            color: #c9a35a;
+            margin-bottom: 22px;
+        }
+        
+        .heritage-quote p {
+            font-family: 'Cinzel', serif;
+            font-style: italic;
+            font-size: 22px;
+            line-height: 1.7;
+            color: #3a3a3a;
+        }
+        
+        @media(max-width:768px) {
+            .heritage-quote p {
+                font-size: 17px;
+            }
+        }
+        
+        .foundations-section {
+            max-width: 1080px;
+            margin: 0 auto 100px;
+            padding: 0 24px;
+        }
+        
+        .foundations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .foundation-card {
+            border-left: 3px solid #c9a35a;
+            background: #fdfaf4;
+            padding: 30px 30px;
+        }
+        
+        .foundation-card h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: #262626;
+            margin-bottom: 12px;
+        }
+        
+        .foundation-card p {
+            font-size: 13.5px;
+            line-height: 1.85;
+            color: #666;
+        }
+        
+        @media(max-width:767.98px) {
+            .foundations-grid {
+                grid-template-columns: 1fr;
             }
         }
         /* ======================================================
@@ -777,13 +1191,13 @@
             <div class="nav-menu" id="navMenu">
 
                 <!-- ABOUT US -->
-                <div class="nav-item">
+                <div class="nav-item active">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         ABOUT US <span class="arrow">▾</span>
                     </a>
                     <div class="dropdown">
-                        <a href="mentahan.html">Hotel Profile</a>
-                        <a href="tesss.html">History</a>
+                        <a href="index.html">Home</a>
+                        <a href="sejarah.html">History</a>
                         <a href="#">Hotel Facilities</a>
                         <a href="#">Contact Us</a>
                     </div>
@@ -825,7 +1239,7 @@
                     </div>
                 </div>
 
-                <!-- WEDDINGS: link langsung ke web eksternal (ganti href di bawah dengan URL aslinya) -->
+                <!-- WEDDINGS -->
                 <div class="nav-item">
                     <a class="nav-link" href="https://www.hotelsalak.co.id/" target="_blank" rel="noopener">
                         WEDDINGS
@@ -871,19 +1285,248 @@
         <div class="rooms-hero-content">
 
             <div class="rooms-subtitle">
-                SPARK UP YOUR CREATIVITY !
+                WARISAN YANG TERUS HIDUP
             </div>
 
             <h1 class="rooms-title">
-                Meeting Rooms
+                Sejarah Kami
             </h1>
 
-            <button class="hero-check-btn">
-                CHECK NOW
+            <button class="hero-check-btn" onclick="document.getElementById('kisahKami').scrollIntoView({behavior:'smooth'})">
+                JELAJAHI KISAHNYA
             </button>
 
         </div>
 
+    </section>
+
+    <!-- ======================================================
+    SEJARAH - OVERVIEW (GAMBAR KIRI + HIGHLIGHT KANAN)
+    ====================================================== -->
+
+    <section class="history-overview" id="kisahKami">
+
+        <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en', this)">EN</button>
+            <button class="lang-btn" data-lang="id" onclick="setLang('id', this)">ID</button>
+        </div>
+
+        <div class="overview-top">
+
+            <div class="overview-image">
+                <img src="https://www.hotelsalak.co.id/slider/images/front.jpg" alt="Hotel Salak The Heritage building">
+            </div>
+
+            <div class="overview-highlights">
+                <h3 class="i18n" data-en="A Legacy Written in Stone" data-id="Warisan yang Terukir dalam Bangunan">A Legacy Written in Stone</h3>
+
+                <div class="highlight-item">
+                    <div class="highlight-num">1</div>
+                    <div>
+                        <h4 class="i18n" data-en="Oldest Recorded Landmark" data-id="Bangunan Tercatat Tertua">Oldest Recorded Landmark</h4>
+                        <p class="i18n" data-en="Hotel Salak The Heritage is the oldest documented building still standing in the city of Bogor, quietly witnessing more than a century of history." data-id="Hotel Salak The Heritage adalah bangunan tercatat tertua yang masih berdiri di Kota Bogor, menjadi saksi bisu lebih dari satu abad perjalanan sejarah.">Hotel Salak The Heritage is the oldest documented building still standing in the city of Bogor, quietly witnessing more than a century of history.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <div class="highlight-num">2</div>
+                    <div>
+                        <h4 class="i18n" data-en="Born as Bellevue-Dibbets Hotel" data-id="Lahir sebagai Bellevue-Dibbets Hotel">Born as Bellevue-Dibbets Hotel</h4>
+                        <p class="i18n" data-en="Built in the early 1900s, it was once owned by a Dutch family connected to the Governor-General, serving as a retreat for the colonial elite." data-id="Dibangun pada awal 1900-an, dahulu dimiliki oleh keluarga Belanda yang memiliki hubungan dengan Gubernur Jenderal, dan menjadi tempat peristirahatan kalangan elite kolonial.">Built in the early 1900s, it was once owned by a Dutch family connected to the Governor-General, serving as a retreat for the colonial elite.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <div class="highlight-num">3</div>
+                    <div>
+                        <h4 class="i18n" data-en="Renamed After Independence" data-id="Berganti Nama Setelah Kemerdekaan">Renamed After Independence</h4>
+                        <p class="i18n" data-en="Following Indonesia's independence, the property was renamed Hotel Salak in 1948, after the nearby Mount Salak." data-id="Setelah Indonesia merdeka, properti ini berganti nama menjadi Hotel Salak pada 1948, mengacu pada Gunung Salak yang tak jauh dari lokasinya.">Following Indonesia's independence, the property was renamed Hotel Salak in 1948, after the nearby Mount Salak.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <div class="highlight-num">4</div>
+                    <div>
+                        <h4 class="i18n" data-en="Reborn as The Heritage" data-id="Terlahir Kembali sebagai The Heritage">Reborn as The Heritage</h4>
+                        <p class="i18n" data-en="A major redevelopment beginning in 1991 preserved the original colonial facade while transforming the hotel into a modern, internationally standard property." data-id="Renovasi besar-besaran yang dimulai pada 1991 mempertahankan fasad kolonial aslinya, sekaligus mengubah hotel ini menjadi properti modern berstandar internasional.">A major redevelopment beginning in 1991 preserved the original colonial facade while transforming the hotel into a modern, internationally standard property.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="overview-bottom">
+            <h2 class="i18n" data-en="Hotel Salak The Heritage" data-id="Hotel Salak The Heritage">Hotel Salak The Heritage</h2>
+            <p class="i18n" data-en="Hotel Salak The Heritage is the oldest recorded building in the city of Bogor, standing quietly in front of the Presidential Palace since the early twentieth century. Known originally as the Bellevue-Dibbets Hotel, it served the Dutch colonial elite before becoming the headquarters of the Japanese military police during the occupation. Renamed Hotel Salak after independence, the property was later redeveloped in the 1990s into a modern heritage hotel, preserving its historic facade while adding contemporary comfort for today's guests."
+                data-id="Hotel Salak The Heritage merupakan bangunan tercatat tertua di Kota Bogor, berdiri tepat di depan Istana Kepresidenan sejak awal abad ke-20. Awalnya dikenal sebagai Bellevue-Dibbets Hotel, tempat ini melayani kalangan elite kolonial Belanda sebelum menjadi markas polisi militer Jepang pada masa pendudukan. Berganti nama menjadi Hotel Salak setelah kemerdekaan, properti ini kemudian direnovasi besar-besaran pada era 1990-an menjadi hotel heritage modern, mempertahankan fasad bersejarahnya sambil menghadirkan kenyamanan masa kini bagi para tamu.">Hotel Salak The Heritage is the oldest recorded building in the city of Bogor, standing quietly in front of the Presidential Palace since the early twentieth century. Known originally as the Bellevue-Dibbets Hotel, it served the Dutch colonial
+                elite before becoming the headquarters of the Japanese military police during the occupation. Renamed Hotel Salak after independence, the property was later redeveloped in the 1990s into a modern heritage hotel, preserving its historic
+                facade while adding contemporary comfort for today's guests.</p>
+        </div>
+
+    </section>
+
+    <!-- ======================================================
+    SEJARAH - DULU & KINI
+    ====================================================== -->
+
+    <section class="then-now-section">
+        <div style="text-align:center;">
+            <div class="section-eyebrow">TRANSFORMASI SEPANJANG MASA</div>
+            <h2 class="section-title">Dulu & Kini</h2>
+        </div>
+
+        <div class="then-now-grid">
+            <div>
+                <div class="then-now-card">
+                    <span class="then-now-label">Dulu</span>
+                    <img src="https://www.hotelsalak.co.id/assets/images/history.jpg" alt="Bangunan bersejarah Hotel Salak pada masa lampau">
+                </div>
+                <div class="then-now-caption">
+                    <h4>Bellevue-Dibbets Hotel, Awal 1900-an</h4>
+                    <p>Wajah bangunan bersejarah yang dulunya menjadi tempat peristirahatan kalangan elite kolonial, sebelum melalui serangkaian renovasi besar.</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="then-now-card">
+                    <span class="then-now-label">Kini</span>
+                    <img src="https://www.hotelsalak.co.id/slider/images/front.jpg" alt="Bangunan Hotel Salak The Heritage saat ini">
+                </div>
+                <div class="then-now-caption">
+                    <h4>Hotel Salak The Heritage, Hari Ini</h4>
+                    <p>Fasad Gedung Heritage tetap dipertahankan sebagai eye-catcher, dipadukan dengan bangunan modern di sekelilingnya yang telah direnovasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================
+    SEJARAH - TIMELINE
+    ====================================================== -->
+
+    <section class="timeline-section">
+        <div class="timeline-wrap">
+            <div style="text-align:center;">
+                <div class="section-eyebrow">PERJALANAN WAKTU</div>
+                <h2 class="section-title">Dari Bellevue-Dibbets Menuju The Heritage</h2>
+            </div>
+
+            <div class="timeline" id="timelineList">
+
+                <div class="timeline-item">
+                    <div class="timeline-year">Awal 1900-an</div>
+                    <h4>Berdiri sebagai Bellevue-Dibbets Hotel</h4>
+                    <p>Pada masa pemerintahan Hindia Belanda, saat Bogor masih bernama <em>Buitenzorg</em> ("kota tanpa beban"), hotel ini didirikan dengan nama Bellevue-Dibbets Hotel. Dimiliki oleh keluarga Belanda yang memiliki hubungan dengan Gubernur
+                        Jenderal Hindia Belanda, hotel ini menjadi tempat peristirahatan kalangan elite serta tempat pertemuan para pengusaha perkebunan, administrator, dan pejabat pemerintah kolonial.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1942 - 1945</div>
+                    <h4>Markas Kempetai di Masa Pendudukan Jepang</h4>
+                    <p>Saat pendudukan Jepang, hotel yang ketika itu memiliki 54 kamar ini beralih fungsi menjadi markas Kempeitai, polisi militer Jepang.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1948</div>
+                    <h4>Berganti Nama Menjadi Hotel Salak</h4>
+                    <p>Menyusul kemerdekaan Indonesia pada 1945, nama hotel diubah menjadi Hotel Salak, diambil dari letaknya yang berada di kaki Gunung Salak.</p>
+                </div>
+
+                <div class="timeline-year" style="display:none"></div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2 September 1991</div>
+                    <h4>Penghentian Operasional Sementara</h4>
+                    <p>Seiring pesatnya pertumbuhan Bogor sebagai kota konvensi, wisata, dan riset pertanian tropis, kebutuhan akan fasilitas berstandar internasional pun meningkat. Operasional hotel dihentikan sementara untuk memulai proses renovasi dan
+                        pengembangan besar-besaran.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">27 Januari 1992</div>
+                    <h4>Izin Pengembangan Resmi Terbit</h4>
+                    <p>Surat Keputusan Menteri Dalam Negeri Republik Indonesia No. 539.32/359/PUOD memberikan izin kepada PT Anugrah Jaya Agung untuk mengembangkan dan mengoperasikan Hotel Salak The Heritage sebagai hotel wisata dan bisnis berstandar internasional,
+                        dengan bangunan kolonial lama tetap dipertahankan sebagai daya tarik utama kawasan.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">11 September 1998</div>
+                    <h4>Pembukaan Kembali secara Bertahap</h4>
+                    <p>Hotel Salak The Heritage yang baru mulai dibuka kembali secara bertahap dengan 32 kamar — terdiri dari Presidential Suite, Superior Executive Room, Executive Room, dan Superior Room — dilengkapi kolam renang, Kinari Cafe, Rafflesia
+                        Bar & Lounge, Istana Ballroom, Galuh Meeting Room, dan pusat perbelanjaan. Pembukaan ini berlangsung bersamaan dengan krisis moneter yang melanda Indonesia, saat nilai tukar rupiah melonjak tajam dari Rp2.300 menjadi sekitar Rp17.000
+                        per dolar AS.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1 April 1999</div>
+                    <h4>Penambahan Kamar dan Fasilitas Baru</h4>
+                    <p>Seiring pertumbuhan bisnis di Bogor, hotel menambah 40 kamar Superior sehingga total menjadi 72 kamar, dilengkapi Rudy Salon, Batutulis Meeting Room, Burangrang Meeting Room, Binnenhof Restaurant, dan Kinanti Music Room.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2000</div>
+                    <h4>Menuju 96 Kamar dan Fasilitas Keluarga</h4>
+                    <p>Pada akhir Februari 2000, 24 kamar Deluxe ditambahkan sehingga total mencapai 96 kamar. Pada Juni 2000, fitness center, Kinanti Kids' Club, dan Kinanti Music Room resmi dibuka untuk kenyamanan tamu.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2001</div>
+                    <h4>Ruang Meeting Pakuan & Kuliner Khas Sunda</h4>
+                    <p>Ruang meeting Pakuan berkapasitas 70 orang rampung dibangun pada Maret 2001. Di tahun yang sama, Ayam Goreng Fatmawati Restaurant dibuka untuk menghadirkan kuliner tradisional khas Sunda dengan standar pelayanan internasional.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2003</div>
+                    <h4>Ekspansi Ruang Meeting & Den Haaq Cafe</h4>
+                    <p>Pada Juni 2003, tiga ruang meeting baru — Padjadjaran 1, 2, dan 3 — dengan kapasitas 40 hingga 100 orang selesai dibangun. Pada Desember 2003, Den Haaq Cafe dibuka untuk menyajikan kue dan pastry segar khas Bogor. Di tahun ini pula,
+                        Yayasan Heritage Bogor didirikan untuk mendukung pengembangan sosial, ekonomi, budaya, dan teknologi masyarakat sekitar.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2005 - 2006</div>
+                    <h4>Penyempurnaan Fasilitas Tamu</h4>
+                    <p>Pertengahan 2005, ruang pre-function baru dilengkapi di Istana Ballroom untuk resepsi pernikahan dan acara korporat. Rudy Salon bertransformasi menjadi ChocolaSpa serta Bellevue Barbershop untuk tamu pria. Memasuki 2006, Rafflesia
+                        Lounge direnovasi menjadi lebih luas dan nyaman, disusul dengan pembukaan area bermain anak.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">Pertengahan 2000-an</div>
+                    <h4>Genap 120 Kamar</h4>
+                    <p>Menjawab permintaan pasar yang terus tumbuh, jumlah kamar terus ditambah hingga mencapai angka akhir 120 kamar, menjadikan Hotel Salak The Heritage sebagai salah satu bangunan bersejarah terbesar yang masih terjaga di Bogor.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================
+    SEJARAH - QUOTE
+    ====================================================== -->
+
+    <section class="heritage-quote">
+        <i class="fa-solid fa-quote-left quote-icon"></i>
+        <p>"Warisan sejarah adalah bukti perjuangan bangsa menuju kemerdekaan, yang penting untuk terus dijaga demi identitas generasi mendatang."</p>
+    </section>
+
+    <!-- ======================================================
+    SEJARAH - YAYASAN PENDUKUNG
+    ====================================================== -->
+
+    <section class="foundations-section">
+        <div style="text-align:center;">
+            <div class="section-eyebrow">KOLABORASI & KEPEDULIAN</div>
+            <h2 class="section-title">Bersama Yayasan untuk Masyarakat</h2>
+        </div>
+        <div class="foundations-grid">
+            <div class="foundation-card">
+                <h4>Yayasan Heritage Bogor</h4>
+                <p>Didirikan pada 2003, yayasan ini berfokus pada pengembangan masyarakat dari sisi sosial, ekonomi, budaya, hingga teknologi — salah satunya melalui program pemanfaatan energi angin — dan setiap tahun memberikan penghargaan bagi tokoh yang
+                    berkontribusi besar bagi masyarakat.</p>
+            </div>
+            <div class="foundation-card">
+                <h4>Yayasan Saring Hadipurnomo</h4>
+                <p>Mendukung peningkatan kualitas hidup penyandang tunanetra melalui organisasi Merpati Putih, yang menerapkan budaya tradisional Kerajaan Mataram Jawa Barat sebagai salah satu daya tarik budaya bagi wisatawan yang berkunjung ke Bogor.</p>
+            </div>
+        </div>
     </section>
 
     <!-- ======================================================
@@ -924,7 +1567,7 @@
             <div class="footer-col">
                 <h4 class="footer-col-title">About Us</h4>
                 <ul class="footer-link-list">
-                    <li><a href="#">History</a></li>
+                    <li><a href="sejarah.html">History</a></li>
                     <li><a href="#">Background</a></li>
                     <li><a href="#">Management</a></li>
                     <li><a href="#">Careers</a></li>
@@ -956,15 +1599,14 @@
     </footer>
 
     <!-- FLOATING WHATSAPP BUTTON -->
-    <!-- Ganti nomor di href (format: 62xxxxxxxxxxx, tanpa tanda + atau 0 di depan) sebelum go-live -->
     <a href="https://wa.me/" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Hubungi kami via WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <script>
         /* =========================================
-                                                   NAVBAR DROPDOWN
-                                                ========================================= */
+                                                                                   NAVBAR DROPDOWN
+                                                                                ========================================= */
 
         function toggleMenu(element) {
 
@@ -1034,9 +1676,6 @@
 
         /* =========================================
            NAVBAR SCROLL BEHAVIOR
-           - Navbar SELALU tampil dari awal (tidak lagi disembunyikan di hero)
-           - Begitu discroll, navbar berubah jadi lebih tipis (navbar-slim)
-           - Balik ke atas, navbar kembali ke ukuran normal
         ========================================= */
 
         const navbar = document.querySelector('.navbar');
@@ -1048,12 +1687,10 @@
             let heroHeight = heroSection.offsetHeight;
 
             if (scrollTop < heroHeight) {
-                // masih di dalam hero -> navbar full hidden
                 navbar.classList.remove('navbar-visible');
                 navbar.classList.remove('navbar-scrolled');
                 navbar.classList.remove('navbar-slim');
             } else {
-                // sudah lewat hero -> navbar muncul & tetap terus ada (tidak hilang lagi saat scroll ke bawah)
                 navbar.classList.add('navbar-visible');
                 navbar.classList.add('navbar-scrolled');
                 navbar.classList.add('navbar-slim');
@@ -1082,6 +1719,45 @@
 
             footerObserver.observe(footerTop);
             footerObserver.observe(footerMain);
+        }
+
+        /* =========================================
+           TIMELINE — SCROLL REVEAL
+        ========================================= */
+
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        if (timelineItems.length) {
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        timelineObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+
+            timelineItems.forEach(item => timelineObserver.observe(item));
+        }
+
+        /* =========================================
+           LANGUAGE TOGGLE (EN / ID)
+        ========================================= */
+
+        function setLang(lang, clickedBtn) {
+
+            document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                btn.classList.toggle('active', btn === clickedBtn);
+            });
+
+            document.querySelectorAll('.i18n').forEach(function(el) {
+                const text = el.getAttribute('data-' + lang);
+                if (text) {
+                    el.textContent = text;
+                }
+            });
         }
     </script>
 
