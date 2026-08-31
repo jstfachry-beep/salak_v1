@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Section - Hotel Salak The Heritage Bogor</title>
+    <title>Hotel Facilities - Hotel Salak The Heritage Bogor</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -22,6 +22,11 @@
         body {
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
+            background: #fffdf9;
+        }
+        
+        img {
+            max-width: 100%;
         }
         /* ======================================================
     NAVBAR (persis sama dengan navbar Hotel Salak)
@@ -29,9 +34,12 @@
         
          :root {
             --logo-h: 52px;
-            /* ganti angka ini saja untuk resize logo, semua elemen navbar ikut menyesuaikan */
             --navbar-h: calc(var(--logo-h) + 40px);
-            /* logo dikebawahin lagi -> jarak lebih lega dari garis bawah navbar */
+            --gold: #b8863f;
+            --gold-light: #c9a35a;
+            --gold-pale: #e8cf9c;
+            --cream: #fdfaf4;
+            --ink: #1c1a17;
         }
         
         .navbar {
@@ -49,13 +57,11 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             border-bottom: 2px solid transparent;
             border-image: linear-gradient(90deg, #c9a35a, #e8cf9c, #c9a35a) 1;
-            /* NAVBAR DISEMBUNYIKAN SELAMA MASIH DI HERO */
             transform: translateY(-100%);
             opacity: 0;
             pointer-events: none;
             transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
         }
-        /* Muncul setelah user scroll melewati hero */
         
         .navbar.navbar-visible {
             transform: translateY(0);
@@ -69,14 +75,12 @@
             border-bottom: 2px solid transparent;
             border-image: linear-gradient(90deg, #c9a35a, #e8cf9c, #c9a35a) 1;
         }
-        /* Sembunyi lagi begitu balik ke area hero / scroll ke bawah (setelah muncul) */
         
         .navbar.navbar-hidden {
             transform: translateY(-100%);
             opacity: 0;
             pointer-events: none;
         }
-        /* Navbar jadi lebih tipis begitu halaman discroll */
         
         .navbar.navbar-slim {
             --navbar-h: calc(var(--logo-h) * 0.72 + 24px);
@@ -135,7 +139,6 @@
         .nav-item.active>.nav-link {
             color: #b8863f !important;
         }
-        /* SUBMENU (desktop) */
         
         .dropdown {
             display: none;
@@ -162,18 +165,15 @@
             background-color: #faf3e6 !important;
             color: #b8863f !important;
         }
-        /* SUBMENU MUNCUL (desktop) */
         
         .nav-item.active .dropdown {
             display: block;
         }
-        /* PANAH */
         
         .arrow {
             font-size: calc(var(--logo-h) * 0.21);
             margin-left: 5px;
         }
-        /* ===== HAMBURGER (mobile/tablet) ===== */
         
         .navbar-toggle {
             display: none;
@@ -211,7 +211,6 @@
             transform: translateY(-7px) rotate(-45deg);
             background-color: #b8863f;
         }
-        /* Overlay saat menu mobile terbuka */
         
         .nav-overlay {
             display: none;
@@ -227,12 +226,8 @@
             display: block;
             opacity: 1;
         }
-        /* =========================================================
-       RESPONSIVE NAVBAR: TABLET & MOBILE (<992px)
-       ========================================================= */
         
         @media (max-width: 991.98px) {
-            /* garis/scroll horizontal tipis di HP saat menu mobile dibuka -> disembunyikan hanya di breakpoint ini */
             html,
             body {
                 overflow-x: hidden;
@@ -247,7 +242,6 @@
             .navbar-toggle {
                 display: flex;
             }
-            /* Menu jadi panel geser dari kanan */
             .nav-menu {
                 position: fixed;
                 top: 0;
@@ -279,7 +273,6 @@
                 align-items: center;
                 justify-content: space-between;
             }
-            /* Submenu jadi accordion, bukan absolute */
             .dropdown {
                 position: static;
                 display: none;
@@ -296,7 +289,6 @@
                 font-size: 14px;
             }
         }
-        /* Tablet sedikit lebih lega dari mobile kecil */
         
         @media (min-width: 576px) and (max-width: 991.98px) {
              :root {
@@ -306,7 +298,6 @@
                 width: min(360px, 70vw);
             }
         }
-        /* HP kecil */
         
         @media (max-width: 400px) {
              :root {
@@ -323,19 +314,28 @@
         .rooms-hero {
             position: relative;
             width: 100%;
-            height: 62vh;
-            background: url('1.jpg');
+            height: 56vh;
+            background: linear-gradient(155deg, #2a251d 0%, #1c1a17 55%, #241f18 100%);
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
+            overflow: hidden;
         }
         
         .rooms-hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, .45);
+            background: radial-gradient(ellipse 60% 90% at 85% 20%, rgba(201, 163, 90, 0.16), transparent 60%), radial-gradient(ellipse 50% 70% at 10% 90%, rgba(201, 163, 90, 0.10), transparent 60%);
+        }
+        
+        .rooms-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(90deg, rgba(232, 207, 156, 0.045) 0px, rgba(232, 207, 156, 0.045) 1px, transparent 1px, transparent 68px);
+            opacity: .6;
         }
         
         .rooms-hero-content {
@@ -351,22 +351,30 @@
             letter-spacing: 8px;
             margin-bottom: 22px;
             font-weight: 300;
+            color: #e8cf9c;
         }
         
         .rooms-title {
             font-family: 'Cinzel', serif;
-            font-size: 92px;
+            font-size: 78px;
             font-weight: 400;
-            line-height: 1.1;
+            line-height: 1.12;
+            max-width: 820px;
         }
-        /* ======================================================
-    MOBILE
-    ====================================================== */
+        
+        .rooms-lede {
+            margin-top: 22px;
+            max-width: 480px;
+            font-size: 15.5px;
+            line-height: 1.85;
+            color: #d8d3c6;
+            font-weight: 300;
+        }
         
         @media(max-width:768px) {
             .rooms-hero {
-                height: 48vh;
-                background-position: center;
+                height: 54vh;
+                min-height: 420px;
             }
             .rooms-hero-content {
                 padding: 0 25px;
@@ -378,13 +386,14 @@
                 margin-bottom: 15px;
             }
             .rooms-title {
-                font-size: 48px;
-                letter-spacing: 2px;
+                font-size: 38px;
+                letter-spacing: .5px;
+            }
+            .rooms-lede {
+                font-size: 14px;
+                line-height: 1.75;
             }
         }
-        /* ======================================================
-    TABLET
-    ====================================================== */
         
         @media(min-width:769px) and (max-width:1024px) {
             .rooms-hero {
@@ -394,7 +403,7 @@
                 padding-left: 40px;
             }
             .rooms-title {
-                font-size: 68px;
+                font-size: 58px;
             }
             .rooms-subtitle {
                 font-size: 12px;
@@ -434,6 +443,363 @@
                 padding: 13px 28px;
                 font-size: 11px;
                 letter-spacing: 2px;
+            }
+        }
+        /* ======================================================
+    FACILITIES INTRO
+    ====================================================== */
+        
+        .fac-intro {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 72px 30px 10px;
+        }
+        
+        .fac-intro-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 60px;
+            align-items: end;
+        }
+        
+        .fac-eyebrow-line {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        
+        .fac-eyebrow-line span {
+            font-size: 13px;
+            letter-spacing: 5px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        
+        .fac-eyebrow-line i {
+            width: 34px;
+            height: 1px;
+            background: var(--gold-light);
+            display: block;
+        }
+        
+        .fac-heading {
+            font-family: 'Cinzel', serif;
+            font-size: 40px;
+            color: #262626;
+            font-weight: 400;
+            line-height: 1.25;
+        }
+        
+        .fac-intro-text {
+            font-size: 14.5px;
+            line-height: 1.9;
+            color: #6b6459;
+            font-weight: 300;
+            max-width: 480px;
+        }
+        
+        @media(max-width:820px) {
+            .fac-intro-grid {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+            .fac-heading {
+                font-size: 30px;
+            }
+        }
+        
+        @media(max-width:480px) {
+            .fac-intro {
+                padding: 56px 20px 6px;
+            }
+        }
+        /* ======================================================
+    CATEGORY NAV (sticky pill tabs)
+    ====================================================== */
+        
+        .fac-nav-wrap {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            background: #fffdf9;
+            border-bottom: 1px solid #efe7d6;
+        }
+        
+        .fac-nav {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 18px 30px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        
+        .fac-nav::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .fac-nav a {
+            flex: 0 0 auto;
+            font-size: 12.5px;
+            letter-spacing: 1px;
+            font-weight: 500;
+            color: #6b6459;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid #e7ddc4;
+            transition: all .3s ease;
+            white-space: nowrap;
+        }
+        
+        .fac-nav a:hover {
+            border-color: var(--gold-light);
+            color: var(--gold);
+        }
+        
+        .fac-nav a.active {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            border-color: var(--gold);
+            color: #fff;
+        }
+        
+        @media(max-width:480px) {
+            .fac-nav {
+                padding: 14px 20px;
+            }
+        }
+        /* ======================================================
+    CATEGORY SECTIONS
+    ====================================================== */
+        
+        .fac-category {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 68px 30px;
+            scroll-margin-top: 90px;
+        }
+        
+        .fac-category+.fac-category {
+            border-top: 1px solid #f1ead8;
+        }
+        
+        .fac-cat-head {
+            display: flex;
+            align-items: baseline;
+            gap: 18px;
+            margin-bottom: 42px;
+        }
+        
+        .fac-cat-num {
+            font-family: 'Cinzel', serif;
+            font-size: 15px;
+            color: var(--gold-light);
+            letter-spacing: 2px;
+        }
+        
+        .fac-cat-title {
+            font-family: 'Cinzel', serif;
+            font-size: 27px;
+            color: #262626;
+            font-weight: 400;
+        }
+        
+        .fac-cat-sub {
+            font-size: 13.5px;
+            color: #948f84;
+            font-weight: 300;
+            margin-top: 6px;
+        }
+        /* featured cards (facilities with photos in the reference) */
+        
+        .fac-featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+            margin-bottom: 36px;
+        }
+        
+        .fac-card {
+            background: #ffffff;
+            border: 1px solid #f1ead8;
+            padding: 34px 28px;
+            transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+        }
+        
+        .fac-card:hover {
+            border-color: var(--gold-light);
+            transform: translateY(-4px);
+            box-shadow: 0 18px 34px rgba(184, 134, 63, 0.12);
+        }
+        
+        .fac-card-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 22px;
+        }
+        
+        .fac-card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 17px;
+            color: #262626;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .fac-card-desc {
+            font-size: 13px;
+            line-height: 1.75;
+            color: #85806f;
+            font-weight: 300;
+        }
+        /* compact list rows for remaining facilities */
+        
+        .fac-list-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px 40px;
+        }
+        
+        .fac-list-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 15px 4px;
+            border-bottom: 1px solid #f1ead8;
+            font-size: 14px;
+            color: #3a3a3a;
+            font-weight: 400;
+        }
+        
+        .fac-list-item i {
+            color: var(--gold);
+            font-size: 13px;
+            flex: 0 0 auto;
+            width: 18px;
+        }
+        
+        @media(max-width:900px) {
+            .fac-featured-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .fac-list-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media(max-width:600px) {
+            .fac-category {
+                padding: 48px 20px;
+            }
+            .fac-featured-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .fac-list-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .fac-cat-title {
+                font-size: 22px;
+            }
+        }
+        /* ======================================================
+    ASSISTANCE BAND
+    ====================================================== */
+        
+        .fac-assist {
+            background: linear-gradient(135deg, #201b14, #1c1a17);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fac-assist::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 50% 80% at 90% 50%, rgba(201, 163, 90, 0.14), transparent 65%);
+        }
+        
+        .fac-assist-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 64px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .fac-assist-title {
+            font-family: 'Cinzel', serif;
+            font-size: 25px;
+            color: #fff;
+            font-weight: 400;
+            max-width: 460px;
+            line-height: 1.5;
+        }
+        
+        .fac-assist-title span {
+            color: #e8cf9c;
+        }
+        
+        .fac-assist-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        
+        .fac-assist-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: all .3s ease;
+        }
+        
+        .fac-assist-btn.primary {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            color: #fff;
+        }
+        
+        .fac-assist-btn.primary:hover {
+            filter: brightness(1.08);
+        }
+        
+        .fac-assist-btn.ghost {
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #f1ead8;
+        }
+        
+        .fac-assist-btn.ghost:hover {
+            border-color: var(--gold-light);
+            color: var(--gold-light);
+        }
+        
+        @media(max-width:480px) {
+            .fac-assist-inner {
+                padding: 48px 20px;
+            }
+            .fac-assist-title {
+                font-size: 20px;
             }
         }
         /* ======================================================
@@ -744,7 +1110,8 @@
             .footer-address-list a,
             .footer-link-list a,
             .floating-whatsapp,
-            .floating-whatsapp::before {
+            .floating-whatsapp::before,
+            .fac-card {
                 transition: none !important;
                 animation: none !important;
             }
@@ -767,7 +1134,6 @@
                 <img src="logo_salak-removebg-preview.png" alt="" class="brand-logo">
             </a>
 
-            <!-- HAMBURGER (muncul di tablet & hp) -->
             <button class="navbar-toggle" id="navbarToggle" aria-label="Buka menu">
                 <span></span>
                 <span></span>
@@ -776,7 +1142,6 @@
 
             <div class="nav-menu" id="navMenu">
 
-                <!-- ABOUT US -->
                 <div class="nav-item">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         ABOUT US <span class="arrow">▾</span>
@@ -789,7 +1154,6 @@
                     </div>
                 </div>
 
-                <!-- ROOMS -->
                 <div class="nav-item">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         ROOMS & SUITES <span class="arrow">▾</span>
@@ -801,7 +1165,6 @@
                     </div>
                 </div>
 
-                <!-- DINING -->
                 <div class="nav-item">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         DINING <span class="arrow">▾</span>
@@ -813,7 +1176,6 @@
                     </div>
                 </div>
 
-                <!-- MEETING -->
                 <div class="nav-item">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         MEETINGS & EVENTS <span class="arrow">▾</span>
@@ -825,14 +1187,12 @@
                     </div>
                 </div>
 
-                <!-- WEDDINGS: link langsung ke web eksternal (ganti href di bawah dengan URL aslinya) -->
                 <div class="nav-item">
                     <a class="nav-link" href="https://www.hotelsalak.co.id/" target="_blank" rel="noopener">
                         WEDDINGS
                     </a>
                 </div>
 
-                <!-- OFFERS -->
                 <div class="nav-item">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         OFFERS <span class="arrow">▾</span>
@@ -844,7 +1204,6 @@
                     </div>
                 </div>
 
-                <!-- MORE -->
                 <div class="nav-item">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         MORE <span class="arrow">▾</span>
@@ -863,25 +1222,195 @@
 
         </nav>
 
-        <!-- OVERLAY (mobile/tablet) -->
         <div class="nav-overlay" id="navOverlay"></div>
 
         <div class="rooms-hero-content">
 
             <div class="rooms-subtitle">
-                SPARK UP YOUR CREATIVITY !
+                COMFORT, CURATED
             </div>
 
             <h1 class="rooms-title">
-                Meeting Rooms
+                Hotel Facilities
             </h1>
 
-            <button class="hero-check-btn">
-                CHECK NOW
-            </button>
+            <p class="rooms-lede">
+                Dari kolam renang terbuka hingga ruang bisnis pribadi, setiap fasilitas di Hotel Salak The Heritage dirancang agar kunjungan Anda terasa lengkap tanpa perlu meninggalkan area hotel.
+            </p>
+
+            <a href="#wellness" class="hero-check-btn">
+                LIHAT FASILITAS
+            </a>
 
         </div>
 
+    </section>
+
+    <!-- ======================================================
+    INTRO
+    ====================================================== -->
+
+    <section class="fac-intro">
+        <div class="fac-intro-grid">
+            <div>
+                <div class="fac-eyebrow-line"><i></i><span>SEJAK 1856</span></div>
+                <h2 class="fac-heading">Fasilitas yang dirancang<br>untuk setiap momen tamu</h2>
+            </div>
+            <p class="fac-intro-text">
+                Empat area layanan kami — relaksasi, bisnis, keluarga, dan bantuan tamu — disusun agar mudah ditemukan, baik saat Anda menjelajah dari ponsel maupun di meja resepsionis.
+            </p>
+        </div>
+    </section>
+
+    <!-- ======================================================
+    CATEGORY NAV
+    ====================================================== -->
+
+    <div class="fac-nav-wrap">
+        <div class="fac-nav" id="facNav">
+            <a href="#wellness" class="active">Wellness & Rekreasi</a>
+            <a href="#business">Bisnis & Rapat</a>
+            <a href="#family">Keluarga & Anak</a>
+            <a href="#services">Layanan Tamu</a>
+        </div>
+    </div>
+
+    <!-- ======================================================
+    WELLNESS & RECREATION
+    ====================================================== -->
+
+    <section class="fac-category" id="wellness">
+        <div class="fac-cat-head">
+            <span class="fac-cat-num">01</span>
+            <div>
+                <div class="fac-cat-title">Wellness & Rekreasi</div>
+                <div class="fac-cat-sub">Waktu untuk memperlambat langkah</div>
+            </div>
+        </div>
+
+        <div class="fac-featured-grid">
+            <div class="fac-card">
+                <div class="fac-card-icon"><i class="fa-solid fa-spa"></i></div>
+                <div class="fac-card-title">ChocolaSpa</div>
+                <div class="fac-card-desc">Perawatan tubuh dengan aroma cokelat hangat di ruang privat beraksen kayu, cocok untuk melepas penat setelah perjalanan.</div>
+            </div>
+            <div class="fac-card">
+                <div class="fac-card-icon"><i class="fa-solid fa-person-swimming"></i></div>
+                <div class="fac-card-title">Outdoor Swimming Pool</div>
+                <div class="fac-card-desc">Kolam renang terbuka dikelilingi palem tropis, terbuka dari pagi hingga petang untuk tamu segala usia.</div>
+            </div>
+            <div class="fac-card">
+                <div class="fac-card-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                <div class="fac-card-title">Fitness Center</div>
+                <div class="fac-card-desc">Peralatan kardio dan beban lengkap, buka 24 jam bagi tamu yang ingin menjaga rutinitas olahraga.</div>
+            </div>
+        </div>
+
+        <div class="fac-list-grid">
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Wet Wet Wet Pool Party — tiap Minggu & libur</div>
+        </div>
+    </section>
+
+    <!-- ======================================================
+    BUSINESS & MEETINGS
+    ====================================================== -->
+
+    <section class="fac-category" id="business">
+        <div class="fac-cat-head">
+            <span class="fac-cat-num">02</span>
+            <div>
+                <div class="fac-cat-title">Bisnis & Rapat</div>
+                <div class="fac-cat-sub">Tetap produktif selama menginap</div>
+            </div>
+        </div>
+
+        <div class="fac-featured-grid">
+            <div class="fac-card">
+                <div class="fac-card-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <div class="fac-card-title">Business Center</div>
+                <div class="fac-card-desc">Ruang kerja tenang dengan komputer dan meja rapat kecil, tersedia bagi tamu yang perlu mengejar tenggat.</div>
+            </div>
+            <div class="fac-card">
+                <div class="fac-card-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                <div class="fac-card-title">N'TIQ Boutique</div>
+                <div class="fac-card-desc">Butik suvenir dan batik di lobi hotel, tempat singkat untuk oleh-oleh sebelum pulang.</div>
+            </div>
+            <div class="fac-card">
+                <div class="fac-card-icon"><i class="fa-solid fa-wifi"></i></div>
+                <div class="fac-card-title">Free WiFi</div>
+                <div class="fac-card-desc">Koneksi internet gratis di seluruh area hotel, dari kamar hingga ruang pertemuan.</div>
+            </div>
+        </div>
+
+        <div class="fac-list-grid">
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Printer / Scanners</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Concierge Desk</div>
+        </div>
+    </section>
+
+    <!-- ======================================================
+    FAMILY & KIDS
+    ====================================================== -->
+
+    <section class="fac-category" id="family">
+        <div class="fac-cat-head">
+            <span class="fac-cat-num">03</span>
+            <div>
+                <div class="fac-cat-title">Keluarga & Anak</div>
+                <div class="fac-cat-sub">Liburan nyaman bersama si kecil</div>
+            </div>
+        </div>
+
+        <div class="fac-list-grid">
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Playground</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Baby Cribs</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Children Movie Night</div>
+        </div>
+    </section>
+
+    <!-- ======================================================
+    GUEST SERVICES
+    ====================================================== -->
+
+    <section class="fac-category" id="services">
+        <div class="fac-cat-head">
+            <span class="fac-cat-num">04</span>
+            <div>
+                <div class="fac-cat-title">Layanan Tamu</div>
+                <div class="fac-cat-sub">Detail kecil yang membuat menginap lebih mudah</div>
+            </div>
+        </div>
+
+        <div class="fac-list-grid">
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Laundry Service</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Rent Car</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Parking - Self Park / Valet</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Erliza Herbal Shop</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Room Service</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Private Garden</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Fish Pond</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Shuttle to Bogor Damri</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Guest Relations Service</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Multi-Lingual Staff</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Luggage Storage</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Shuttle to Train Station</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Art & Drugstore</div>
+            <div class="fac-list-item"><i class="fa-solid fa-check"></i>Dentist</div>
+        </div>
+    </section>
+
+    <!-- ======================================================
+    ASSISTANCE BAND
+    ====================================================== -->
+
+    <section class="fac-assist">
+        <div class="fac-assist-inner">
+            <div class="fac-assist-title">Butuh bantuan memilih fasilitas yang tepat untuk<span> acara atau menginap Anda?</span></div>
+            <div class="fac-assist-actions">
+                <a href="https://wa.me/" class="fac-assist-btn primary" target="_blank" rel="noopener">Chat via WhatsApp</a>
+                <a href="#" class="fac-assist-btn ghost">Hubungi Concierge</a>
+            </div>
+        </div>
     </section>
 
     <!-- ======================================================
@@ -954,18 +1483,16 @@
     </footer>
 
     <!-- FLOATING WHATSAPP BUTTON -->
-    <!-- Ganti nomor di href (format: 62xxxxxxxxxxx, tanpa tanda + atau 0 di depan) sebelum go-live -->
     <a href="https://wa.me/" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Hubungi kami via WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <script>
         /* =========================================
-                                                                                                           NAVBAR DROPDOWN
-                                                                                                        ========================================= */
+                           NAVBAR DROPDOWN
+                        ========================================= */
 
         function toggleMenu(element) {
-
             const currentItem = element.parentElement;
             const allItems = document.querySelectorAll('.nav-item');
 
@@ -1032,32 +1559,52 @@
 
         /* =========================================
            NAVBAR SCROLL BEHAVIOR
-           - Navbar SELALU tampil dari awal (tidak lagi disembunyikan di hero)
-           - Begitu discroll, navbar berubah jadi lebih tipis (navbar-slim)
-           - Balik ke atas, navbar kembali ke ukuran normal
         ========================================= */
 
         const navbar = document.querySelector('.navbar');
         const heroSection = document.querySelector('.rooms-hero');
 
         window.addEventListener('scroll', function() {
-
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             let heroHeight = heroSection.offsetHeight;
 
             if (scrollTop < heroHeight) {
-                // masih di dalam hero -> navbar full hidden
                 navbar.classList.remove('navbar-visible');
                 navbar.classList.remove('navbar-scrolled');
                 navbar.classList.remove('navbar-slim');
             } else {
-                // sudah lewat hero -> navbar muncul & tetap terus ada (tidak hilang lagi saat scroll ke bawah)
                 navbar.classList.add('navbar-visible');
                 navbar.classList.add('navbar-scrolled');
                 navbar.classList.add('navbar-slim');
             }
-
+        }, {
+            passive: true
         });
+
+        /* =========================================
+           CATEGORY NAV — active pill highlight on scroll
+        ========================================= */
+
+        const facSections = document.querySelectorAll('.fac-category');
+        const facNavLinks = document.querySelectorAll('#facNav a');
+
+        if (facSections.length && facNavLinks.length) {
+            const facObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        facNavLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                        });
+                    }
+                });
+            }, {
+                rootMargin: '-45% 0px -50% 0px',
+                threshold: 0
+            });
+
+            facSections.forEach(section => facObserver.observe(section));
+        }
 
         /* =========================================
            FOOTER — SCROLL REVEAL

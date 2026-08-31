@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Section - Hotel Salak The Heritage Bogor</title>
+    <title>Meeting Rooms - Hotel Salak The Heritage</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -22,6 +22,7 @@
         body {
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
+            background: #fdfaf4;
         }
         /* ======================================================
     NAVBAR (persis sama dengan navbar Hotel Salak)
@@ -29,9 +30,7 @@
         
          :root {
             --logo-h: 52px;
-            /* ganti angka ini saja untuk resize logo, semua elemen navbar ikut menyesuaikan */
             --navbar-h: calc(var(--logo-h) + 40px);
-            /* logo dikebawahin lagi -> jarak lebih lega dari garis bawah navbar */
         }
         
         .navbar {
@@ -49,13 +48,11 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             border-bottom: 2px solid transparent;
             border-image: linear-gradient(90deg, #c9a35a, #e8cf9c, #c9a35a) 1;
-            /* NAVBAR DISEMBUNYIKAN SELAMA MASIH DI HERO */
             transform: translateY(-100%);
             opacity: 0;
             pointer-events: none;
             transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
         }
-        /* Muncul setelah user scroll melewati hero */
         
         .navbar.navbar-visible {
             transform: translateY(0);
@@ -69,14 +66,12 @@
             border-bottom: 2px solid transparent;
             border-image: linear-gradient(90deg, #c9a35a, #e8cf9c, #c9a35a) 1;
         }
-        /* Sembunyi lagi begitu balik ke area hero / scroll ke bawah (setelah muncul) */
         
         .navbar.navbar-hidden {
             transform: translateY(-100%);
             opacity: 0;
             pointer-events: none;
         }
-        /* Navbar jadi lebih tipis begitu halaman discroll */
         
         .navbar.navbar-slim {
             --navbar-h: calc(var(--logo-h) * 0.72 + 24px);
@@ -135,7 +130,6 @@
         .nav-item.active>.nav-link {
             color: #b8863f !important;
         }
-        /* SUBMENU (desktop) */
         
         .dropdown {
             display: none;
@@ -162,18 +156,15 @@
             background-color: #faf3e6 !important;
             color: #b8863f !important;
         }
-        /* SUBMENU MUNCUL (desktop) */
         
         .nav-item.active .dropdown {
             display: block;
         }
-        /* PANAH */
         
         .arrow {
             font-size: calc(var(--logo-h) * 0.21);
             margin-left: 5px;
         }
-        /* ===== HAMBURGER (mobile/tablet) ===== */
         
         .navbar-toggle {
             display: none;
@@ -211,7 +202,6 @@
             transform: translateY(-7px) rotate(-45deg);
             background-color: #b8863f;
         }
-        /* Overlay saat menu mobile terbuka */
         
         .nav-overlay {
             display: none;
@@ -227,12 +217,8 @@
             display: block;
             opacity: 1;
         }
-        /* =========================================================
-       RESPONSIVE NAVBAR: TABLET & MOBILE (<992px)
-       ========================================================= */
         
         @media (max-width: 991.98px) {
-            /* garis/scroll horizontal tipis di HP saat menu mobile dibuka -> disembunyikan hanya di breakpoint ini */
             html,
             body {
                 overflow-x: hidden;
@@ -247,7 +233,6 @@
             .navbar-toggle {
                 display: flex;
             }
-            /* Menu jadi panel geser dari kanan */
             .nav-menu {
                 position: fixed;
                 top: 0;
@@ -279,7 +264,6 @@
                 align-items: center;
                 justify-content: space-between;
             }
-            /* Submenu jadi accordion, bukan absolute */
             .dropdown {
                 position: static;
                 display: none;
@@ -296,7 +280,6 @@
                 font-size: 14px;
             }
         }
-        /* Tablet sedikit lebih lega dari mobile kecil */
         
         @media (min-width: 576px) and (max-width: 991.98px) {
              :root {
@@ -306,7 +289,6 @@
                 width: min(360px, 70vw);
             }
         }
-        /* HP kecil */
         
         @media (max-width: 400px) {
              :root {
@@ -359,9 +341,6 @@
             font-weight: 400;
             line-height: 1.1;
         }
-        /* ======================================================
-    MOBILE
-    ====================================================== */
         
         @media(max-width:768px) {
             .rooms-hero {
@@ -382,9 +361,6 @@
                 letter-spacing: 2px;
             }
         }
-        /* ======================================================
-    TABLET
-    ====================================================== */
         
         @media(min-width:769px) and (max-width:1024px) {
             .rooms-hero {
@@ -401,9 +377,6 @@
                 letter-spacing: 5px;
             }
         }
-        /* ======================================================
-    CHECK NOW BUTTON
-    ====================================================== */
         
         .hero-check-btn {
             display: inline-block;
@@ -435,6 +408,365 @@
                 font-size: 11px;
                 letter-spacing: 2px;
             }
+        }
+        /* ======================================================
+    MEETING INTRO
+    ====================================================== */
+        
+        .meeting-intro {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 90px 24px 20px;
+            text-align: center;
+        }
+        
+        .meeting-eyebrow {
+            font-size: 13px;
+            letter-spacing: 4px;
+            color: #b8863f;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+        
+        .meeting-heading {
+            font-family: 'Cinzel', serif;
+            font-size: 40px;
+            color: #262626;
+            margin-bottom: 26px;
+        }
+        
+        .meeting-copy {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #55524b;
+            max-width: 820px;
+            margin: 0 auto 18px;
+        }
+        
+        .meeting-copy b {
+            color: #262626;
+        }
+        
+        .meeting-contact {
+            font-size: 14px;
+            color: #55524b;
+        }
+        
+        .meeting-contact b {
+            color: #b8863f;
+        }
+        
+        @media(max-width:576px) {
+            .meeting-heading {
+                font-size: 30px;
+            }
+        }
+        /* ======================================================
+    INTRO + PACKAGES (side-by-side so rooms sit higher on the page)
+    ====================================================== */
+        
+        .intro-packages {
+            max-width: 1220px;
+            margin: 0 auto;
+            padding: 90px 24px 30px;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 64px;
+            align-items: start;
+        }
+        
+        .intro-col .meeting-eyebrow,
+        .intro-col .meeting-heading,
+        .intro-col .meeting-copy,
+        .intro-col .meeting-contact {
+            text-align: left;
+        }
+        
+        .intro-col .meeting-copy {
+            margin: 0 0 18px;
+            max-width: 94%;
+        }
+        
+        .packages-col {
+            background: #ffffff;
+            border: 1px solid #ecdfc2;
+            padding: 36px 34px;
+        }
+        
+        .packages-col .meeting-eyebrow {
+            text-align: left;
+            margin-bottom: 8px;
+        }
+        
+        .packages-col .meeting-heading {
+            text-align: left;
+            font-size: 24px;
+            margin-bottom: 0;
+        }
+        
+        @media(max-width:991.98px) {
+            .intro-packages {
+                grid-template-columns: 1fr;
+                gap: 44px;
+                padding-top: 70px;
+            }
+        }
+        
+        .package-list {
+            margin-top: 20px;
+        }
+        
+        .package-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 18px 0;
+            border-bottom: 1px solid #ecdfc2;
+        }
+        
+        .package-item:first-child {
+            padding-top: 0;
+        }
+        
+        .package-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .package-badge {
+            flex: 0 0 auto;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #b8863f;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+        }
+        
+        .package-name {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 15.5px;
+            color: #262626;
+            margin-bottom: 5px;
+        }
+        
+        .package-desc {
+            font-size: 12.5px;
+            line-height: 1.65;
+            color: #706c62;
+        }
+        /* ======================================================
+    MEETING ROOM CARDS (1 CARD = 1 ROOM)
+    ====================================================== */
+        
+        .rooms-section {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 60px 24px 100px;
+        }
+        
+        .rooms-section-head {
+            text-align: center;
+            margin-bottom: 46px;
+        }
+        
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        @media(max-width:991.98px) {
+            .rooms-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media(max-width:575.98px) {
+            .rooms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .room-card {
+            perspective: 1600px;
+            height: 400px;
+        }
+        
+        .room-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform .6s cubic-bezier(.4, .2, .2, 1);
+            transform-style: preserve-3d;
+        }
+        
+        .room-card.flipped .room-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .room-face {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            background: #ffffff;
+            border: 1px solid #ecdfc2;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .room-face-back {
+            transform: rotateY(180deg);
+            padding: 28px 26px;
+        }
+        /* FRONT */
+        
+        .room-photo {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            background-color: #efe6cf;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .room-photo i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            color: #c9a35a;
+            opacity: .55;
+        }
+        
+        .room-body {
+            padding: 22px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        
+        .room-eyebrow {
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            color: #b8863f;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .room-name {
+            font-family: 'Cinzel', serif;
+            font-size: 21px;
+            color: #262626;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .room-capacity-line {
+            font-size: 13px;
+            color: #706c62;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .room-capacity-line b {
+            color: #262626;
+        }
+        
+        .room-details-btn {
+            margin-top: auto;
+            align-self: flex-start;
+            border: 1px solid #b8863f;
+            color: #b8863f;
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            padding: 11px 26px;
+            cursor: pointer;
+            transition: background .3s ease, color .3s ease;
+        }
+        
+        .room-details-btn:hover {
+            background: #b8863f;
+            color: #ffffff;
+        }
+        /* BACK */
+        
+        .room-back-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .room-back-link {
+            background: none;
+            border: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #b8863f;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0;
+        }
+        
+        .room-back-name {
+            font-family: 'Cinzel', serif;
+            font-size: 19px;
+            color: #262626;
+            margin-bottom: 6px;
+        }
+        
+        .room-back-sub {
+            font-size: 12px;
+            color: #948f84;
+            margin-bottom: 18px;
+        }
+        
+        .room-stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px 18px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        
+        .room-stat {
+            border-top: 2px solid #ecdfc2;
+            padding-top: 8px;
+        }
+        
+        .room-stat-label {
+            font-size: 10.5px;
+            letter-spacing: 1px;
+            color: #948f84;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        
+        .room-stat-value {
+            font-size: 15px;
+            color: #262626;
+            font-weight: 500;
+        }
+        
+        .room-back-note {
+            font-size: 11px;
+            color: #b0aa9c;
+            margin-top: 18px;
+            line-height: 1.6;
         }
         /* ======================================================
     FOOTER (sama seperti halaman utama)
@@ -744,7 +1076,8 @@
             .footer-address-list a,
             .footer-link-list a,
             .floating-whatsapp,
-            .floating-whatsapp::before {
+            .floating-whatsapp::before,
+            .room-card-inner {
                 transition: none !important;
                 animation: none !important;
             }
@@ -760,14 +1093,12 @@
 
     <section class="rooms-hero">
 
-        <!-- NAVBAR (persis sama dengan navbar Hotel Salak) -->
         <nav class="navbar">
 
             <a class="navbar-brand" href="#">
                 <img src="logo_salak-removebg-preview.png" alt="" class="brand-logo">
             </a>
 
-            <!-- HAMBURGER (muncul di tablet & hp) -->
             <button class="navbar-toggle" id="navbarToggle" aria-label="Buka menu">
                 <span></span>
                 <span></span>
@@ -776,20 +1107,18 @@
 
             <div class="nav-menu" id="navMenu">
 
-                <!-- ABOUT US -->
                 <div class="nav-item">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         ABOUT US <span class="arrow">▾</span>
                     </a>
                     <div class="dropdown">
-                        <a href="mentahan.html">Home </a>
+                        <a href="index.html">Home</a>
                         <a href="sejarah.html">History</a>
                         <a href="faselitas.html">Hotel Facilities</a>
                         <a href="#">Contact Us</a>
                     </div>
                 </div>
 
-                <!-- ROOMS -->
                 <div class="nav-item">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         ROOMS & SUITES <span class="arrow">▾</span>
@@ -801,7 +1130,6 @@
                     </div>
                 </div>
 
-                <!-- DINING -->
                 <div class="nav-item">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         DINING <span class="arrow">▾</span>
@@ -813,8 +1141,7 @@
                     </div>
                 </div>
 
-                <!-- MEETING -->
-                <div class="nav-item">
+                <div class="nav-item active">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         MEETINGS & EVENTS <span class="arrow">▾</span>
                     </a>
@@ -825,14 +1152,12 @@
                     </div>
                 </div>
 
-                <!-- WEDDINGS: link langsung ke web eksternal (ganti href di bawah dengan URL aslinya) -->
                 <div class="nav-item">
                     <a class="nav-link" href="https://www.hotelsalak.co.id/" target="_blank" rel="noopener">
                         WEDDINGS
                     </a>
                 </div>
 
-                <!-- OFFERS -->
                 <div class="nav-item">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         OFFERS <span class="arrow">▾</span>
@@ -844,7 +1169,6 @@
                     </div>
                 </div>
 
-                <!-- MORE -->
                 <div class="nav-item">
                     <a class="nav-link" onclick="toggleMenu(this)">
                         MORE <span class="arrow">▾</span>
@@ -863,7 +1187,6 @@
 
         </nav>
 
-        <!-- OVERLAY (mobile/tablet) -->
         <div class="nav-overlay" id="navOverlay"></div>
 
         <div class="rooms-hero-content">
@@ -876,7 +1199,7 @@
                 Meeting Rooms
             </h1>
 
-            <button class="hero-check-btn">
+            <button class="hero-check-btn" onclick="document.getElementById('roomsGrid').scrollIntoView({behavior:'smooth'})">
                 CHECK NOW
             </button>
 
@@ -885,7 +1208,75 @@
     </section>
 
     <!-- ======================================================
-    FOOTER (sama seperti halaman utama)
+    INTRO + PACKAGES (side-by-side)
+    ====================================================== -->
+
+    <section class="intro-packages">
+
+        <div class="intro-col">
+            <div class="meeting-eyebrow">HOTEL SALAK THE HERITAGE</div>
+            <h2 class="meeting-heading">A Space for Every Kind of Gathering</h2>
+            <p class="meeting-copy">
+                We provide <b>12 meeting rooms</b> across the property, ready for functions from an intimate board discussion to a full-scale conference of hundreds of guests. Every room comes with audio-visual equipment, projector screens, and wireless
+                microphones, with HD video conferencing and large display screens available on request.
+            </p>
+            <p class="meeting-contact">
+                Call <b>0251-837-31111</b> or use the Meeting Inquiry Form to request a meeting space.
+            </p>
+        </div>
+
+        <div class="packages-col">
+            <div class="meeting-eyebrow">MEETING PACKAGES</div>
+            <h2 class="meeting-heading">Four Exclusive Packages</h2>
+            <div class="package-list">
+                <div class="package-item">
+                    <div class="package-badge">1</div>
+                    <div>
+                        <div class="package-name">Full Board Meeting</div>
+                        <div class="package-desc">One night accommodation, breakfast, lunch and dinner buffet, plus two coffee breaks.</div>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <div class="package-badge">2</div>
+                    <div>
+                        <div class="package-name">Full Day Meeting</div>
+                        <div class="package-desc">Lunch buffet, dinner buffet, and two coffee breaks.</div>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <div class="package-badge">3</div>
+                    <div>
+                        <div class="package-name">One Day Meeting</div>
+                        <div class="package-desc">Lunch or dinner buffet, plus two coffee breaks.</div>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <div class="package-badge">4</div>
+                    <div>
+                        <div class="package-name">Half Day Meeting</div>
+                        <div class="package-desc">Lunch or dinner buffet, plus one coffee break.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ======================================================
+    MEETING ROOM CARDS — 1 CARD = 1 ROOM
+    ====================================================== -->
+
+    <section class="rooms-section" id="roomsGrid">
+        <div class="rooms-section-head">
+            <div class="meeting-eyebrow">MEETING ROOMS</div>
+            <h2 class="meeting-heading">Choose Your Room</h2>
+        </div>
+
+        <div class="rooms-grid" id="roomsContainer"></div>
+    </section>
+
+    <!-- ======================================================
+    FOOTER
     ====================================================== -->
 
     <div class="site-footer-top" id="footerTop">
@@ -953,28 +1344,211 @@
         </div>
     </footer>
 
-    <!-- FLOATING WHATSAPP BUTTON -->
-    <!-- Ganti nomor di href (format: 62xxxxxxxxxxx, tanpa tanda + atau 0 di depan) sebelum go-live -->
     <a href="https://wa.me/" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Hubungi kami via WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <script>
         /* =========================================
-                                                                                                           NAVBAR DROPDOWN
-                                                                                                        ========================================= */
+                                                                           ROOM DATA — 1 card = 1 room
+                                                                           Floor / Dimension / Height are only shown when known.
+                                                                           Capacity figures are from the hotel's official meeting brochure.
+                                                                        ========================================= */
+        const rooms = [{
+            name: "Istana Ballroom",
+            floor: "",
+            dimension: "",
+            height: "",
+            theater: "150 - 400",
+            classroom: "75 - 150",
+            roundtable: "100 - 150",
+            ushape: "50 - 100",
+            img: "rooms/istana-ballroom.jpg"
+        }, {
+            name: "Padjadjaran I",
+            floor: "4th Floor",
+            dimension: "12.5 x 10.5 m²",
+            height: "3.1 m",
+            theater: "70 - 100",
+            classroom: "40 - 70",
+            roundtable: "30 - 50",
+            ushape: "20 - 40",
+            img: "rooms/padjadjaran-1.jpg"
+        }, {
+            name: "Padjadjaran II",
+            floor: "4th Floor",
+            dimension: "11 x 7 m²",
+            height: "3.1 m",
+            theater: "50 - 80",
+            classroom: "40 - 60",
+            roundtable: "20 - 40",
+            ushape: "20 - 30",
+            img: "rooms/padjadjaran-2.jpg"
+        }, {
+            name: "Padjadjaran III",
+            floor: "4th Floor",
+            dimension: "11 x 7 m²",
+            height: "3.1 m",
+            theater: "50 - 80",
+            classroom: "40 - 60",
+            roundtable: "20 - 40",
+            ushape: "20 - 30",
+            img: "rooms/padjadjaran-3.jpg"
+        }, {
+            name: "Kinanti Room",
+            floor: "",
+            dimension: "",
+            height: "",
+            theater: "100 - 125",
+            classroom: "50 - 70",
+            roundtable: "70 - 150",
+            ushape: "30 - 40",
+            img: "rooms/kinanti.jpg"
+        }, {
+            name: "Galuh",
+            floor: "",
+            dimension: "",
+            height: "",
+            theater: "70 - 100",
+            classroom: "30 - 70",
+            roundtable: "30 - 50",
+            ushape: "20 - 40",
+            img: "rooms/galuh.jpg"
+        }, {
+            name: "Pakuan",
+            floor: "",
+            dimension: "",
+            height: "",
+            theater: "50 - 100",
+            classroom: "50 - 70",
+            roundtable: "30 - 50",
+            ushape: "20 - 40",
+            img: "rooms/pakuan.jpg"
+        }, {
+            name: "Burangrang",
+            floor: "",
+            dimension: "",
+            height: "",
+            theater: "30 - 50",
+            classroom: "20 - 25",
+            roundtable: "20 - 25",
+            ushape: "15 - 25",
+            img: "rooms/burangrang.jpg"
+        }, {
+            name: "Batutulis I",
+            floor: "",
+            dimension: "",
+            height: "",
+            theater: "20 - 30",
+            classroom: "10 - 20",
+            roundtable: "10 - 20",
+            ushape: "10 - 25",
+            img: "rooms/batutulis-1.jpg"
+        }, {
+            name: "Batutulis II",
+            floor: "",
+            dimension: "",
+            height: "",
+            theater: "20 - 30",
+            classroom: "15 - 18",
+            roundtable: "15 - 20",
+            ushape: "15 - 20",
+            img: "rooms/batutulis-2.jpg"
+        }, {
+            name: "Batutulis III",
+            floor: "",
+            dimension: "",
+            height: "",
+            theater: "10 - 20",
+            classroom: "10 - 16",
+            roundtable: "10 - 18",
+            ushape: "10 - 15",
+            img: "rooms/batutulis-3.jpg"
+        }, {
+            name: "Kujang",
+            floor: "",
+            dimension: "",
+            height: "",
+            theater: "4 - 8",
+            classroom: "10 - 15",
+            roundtable: "4 - 8",
+            ushape: "10 - 15",
+            img: "rooms/kujang.jpg"
+        }];
+
+        function maxCapacity(room) {
+            const nums = [room.theater, room.classroom, room.roundtable, room.ushape]
+                .map(r => parseInt(r.split('-')[1].trim(), 10));
+            return Math.max(...nums);
+        }
+
+        function statRow(label, value) {
+            if (!value) return '';
+            return `<div class="room-stat">
+                        <div class="room-stat-label">${label}</div>
+                        <div class="room-stat-value">${value}</div>
+                    </div>`;
+        }
+
+        function renderRooms() {
+            const container = document.getElementById('roomsContainer');
+            container.innerHTML = rooms.map((room, i) => `
+                <div class="room-card" id="room-${i}">
+                    <div class="room-card-inner">
+
+                        <div class="room-face room-face-front">
+                            <div class="room-photo" style="background-image:url('${room.img}')">
+                                <i class="fa-solid fa-champagne-glasses"></i>
+                            </div>
+                            <div class="room-body">
+                                <div class="room-eyebrow">MEETING ROOM</div>
+                                <div class="room-name">${room.name}</div>
+                                <div class="room-capacity-line">Accommodates up to <b>${maxCapacity(room)}</b> guests, theatre style.</div>
+                                <button class="room-details-btn" onclick="flipRoom(${i})">DETAILS</button>
+                            </div>
+                        </div>
+
+                        <div class="room-face room-face-back">
+                            <div class="room-back-top">
+                                <button class="room-back-link" onclick="flipRoom(${i})"><i class="fa-solid fa-arrow-left"></i> BACK</button>
+                            </div>
+                            <div class="room-back-name">${room.name}</div>
+                            <div class="room-back-sub">Up to ${maxCapacity(room)} person</div>
+                            <div class="room-stat-grid">
+                                ${statRow('Floor', room.floor)}
+                                ${statRow('Dimension', room.dimension)}
+                                ${statRow('Height', room.height)}
+                                ${statRow('Theatre', room.theater)}
+                                ${statRow('Classroom', room.classroom)}
+                                ${statRow('Round Table', room.roundtable)}
+                                ${statRow('U-Shape', room.ushape)}
+                            </div>
+                            ${(!room.floor) ? '<div class="room-back-note">Room dimension not yet available — contact us for exact floor plan.</div>' : ''}
+                        </div>
+
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function flipRoom(i) {
+            document.getElementById('room-' + i).classList.toggle('flipped');
+        }
+
+        renderRooms();
+
+        /* =========================================
+           NAVBAR DROPDOWN
+        ========================================= */
 
         function toggleMenu(element) {
-
             const currentItem = element.parentElement;
             const allItems = document.querySelectorAll('.nav-item');
-
             allItems.forEach(function(item) {
                 if (item !== currentItem) {
                     item.classList.remove('active');
                 }
             });
-
             currentItem.classList.toggle('active');
         }
 
@@ -999,7 +1573,6 @@
             navbarToggle.classList.remove('open');
             navMenu.classList.remove('open');
             navOverlay.classList.remove('show');
-
             document.querySelectorAll('.nav-item')
                 .forEach(function(item) {
                     item.classList.remove('active');
@@ -1014,7 +1587,6 @@
 
         navbarToggle.addEventListener('click', function(event) {
             event.stopPropagation();
-
             if (navMenu.classList.contains('open')) {
                 closeMobileMenu();
             } else {
@@ -1032,31 +1604,24 @@
 
         /* =========================================
            NAVBAR SCROLL BEHAVIOR
-           - Navbar SELALU tampil dari awal (tidak lagi disembunyikan di hero)
-           - Begitu discroll, navbar berubah jadi lebih tipis (navbar-slim)
-           - Balik ke atas, navbar kembali ke ukuran normal
         ========================================= */
 
         const navbar = document.querySelector('.navbar');
         const heroSection = document.querySelector('.rooms-hero');
 
         window.addEventListener('scroll', function() {
-
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             let heroHeight = heroSection.offsetHeight;
 
             if (scrollTop < heroHeight) {
-                // masih di dalam hero -> navbar full hidden
                 navbar.classList.remove('navbar-visible');
                 navbar.classList.remove('navbar-scrolled');
                 navbar.classList.remove('navbar-slim');
             } else {
-                // sudah lewat hero -> navbar muncul & tetap terus ada (tidak hilang lagi saat scroll ke bawah)
                 navbar.classList.add('navbar-visible');
                 navbar.classList.add('navbar-scrolled');
                 navbar.classList.add('navbar-slim');
             }
-
         });
 
         /* =========================================
